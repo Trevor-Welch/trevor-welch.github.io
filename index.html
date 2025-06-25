@@ -30,11 +30,12 @@
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script type="text/javascript">
-    const App = () => (
-      <div class="container">
-        <h1>This is a test (Home)</h1>
-      </div>
-    );
+    const App = () =>
+      React.createElement(
+        "div",
+        { className: "container" },
+        React.createElement("h1", null, "This is a test (Home)")
+      );
     ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App));
   </script>
 </body>
