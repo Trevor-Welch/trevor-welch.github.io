@@ -1,12 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',            // Enables static export
-  trailingSlash: true,         // Ensures GitHub Pages can load subpages
+  output: 'export',
   images: {
-    unoptimized: true,         // Required if using next/image
+    unoptimized: true, // Required for static export if you use <Image />
   },
-  basePath: '',                // No basePath for root domain
+  trailingSlash: true, // Required by GitHub Pages to serve index.html in subfolders
 };
 
 export default nextConfig;

@@ -1,0 +1,66 @@
+.menu-link {
+  position: relative;
+  display: inline-block;
+  background-color: #A4A190;
+  color: var(--color-text);
+  overflow: hidden;
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+
+  opacity: 0;
+  animation-name: fadeInScale;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  
+  /* fix height so no vertical shift */
+  line-height: 1.5;
+  /* optionally fix height explicitly */
+  /* height: 2.5rem; */
+}
+
+.menu-link:hover::before {
+  width: 100%;
+}
+
+.menu-link:hover {
+  color: white;
+  border-top-color: var(--color-text);
+  border-bottom-color: var(--color-text);
+}
+
+.menu-link::before {
+  content: "";
+  position: absolute;
+  top: 2px;                             /* push down 2px */
+  left: 0;
+  width: 0;
+  height: calc(100% - 4px);            /* full height minus 4px */
+  background-color: #4D493E;
+  transition: width 0.3s ease, left 0.3s ease;
+  z-index: -1;
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+.title {
+  opacity: 0;
+  animation-name: fadeInScale;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  animation-delay: 0.0s;
+}

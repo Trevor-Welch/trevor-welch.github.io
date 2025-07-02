@@ -1,103 +1,94 @@
-import Image from "next/image";
+"use client";
+import ViewingBox, { ViewingBoxItem } from './components/ViewingBox/ViewingBox';
+import JumpInText from './components/JumpInText/JumpInText';
+import DetailsCard from './components/DetailsCard/DetailsCard';
+import CardGroup from './components/CardGroup/CardGroup';
+import CardData from './components/CardData/CardData';
+import StylizedButton from './components/StylizedButton/StylizedButton';
+
+const items: ViewingBoxItem[] = [
+  {
+    id: 'intro',
+    label: 'Intro',
+    content: <DetailsCard title="Introductory Message" note="SGVsbG8gV29ybGQ=" className="max-w-4xl">
+        <CardGroup gap={16}>
+          <p>Welcome!</p>
+          <p>I’m Trevor Welch, a freelance web developer based in Raleigh, NC. I’m passionate about crafting websites that make the internet a more beautiful and engaging place to explore.</p>
+          <p>I’ve helped over 40 clients turn their underperforming websites into solid sales funnels that actually bring in traffic and sales — with designs unique to them, no boring cookie-cutter stuff here.</p>
+          <p>I’ve also contributed to an open-source project that got some love from Forbes and enjoyed supporting a handful of non-profits to boost their online presence.</p>
+          <p>For me, my favorite projects are one where we have chance to shake things up.</p>
+          <p>I could yap more about myself, but let’s get you where you want to be.</p>
+        
+        </CardGroup>
+        <CardGroup gap={16} row>
+          <StylizedButton
+            label='"Show Me Your Past Projects"'
+            href="/projects"
+            variant="dark"
+          />
+          
+          <StylizedButton
+            label='"What Services Do You Offer?"'
+            href="/services"
+            variant="dark"
+            external
+          />
+
+
+          <StylizedButton
+            label='"Actually, I Want To Learn More About You"'
+            href="/about"
+            variant="dark" 
+          />
+
+        </CardGroup>  
+        <CardGroup >
+          <p>Interested in collaborating on a project or upgrading your business’s website? Get in touch for affordable rates.</p>
+          <CardGroup row>
+            <StylizedButton
+            label='"Let’s Chat"'
+            href="/contact"
+            variant="dark"
+          />
+          </CardGroup>
+        </CardGroup>
+      </DetailsCard>
+  },
+  {
+    id: 'skills',
+    label: 'Skills',
+    content: <DetailsCard title="Knowledge Base" note="SG93IG11Y2ggZG8geW91IGtub3c/" className="max-w-4xl">
+        <CardGroup gap={16}>
+          <p><i>No flashy bar graphs here measuring how proficient I feel in every trendy technology.</i> I&apos;d rather keep it simple.</p>
+          <p>If it’s listed below, rest assured: I can deploy it in a production environment without breaking the build — probably. Think of this as a straightforward inventory of the tools on my toolbelt, not a self-esteem exercise.</p>
+        </CardGroup>
+        <CardGroup gap={8}>
+          <CardData label="Frontend" content="React, Next.js, Tailwind CSS, HTML, CSS, JavaScript, TypeScript" />
+          <CardData label="Frontend" content="React, Next.js, Tailwind CSS, HTML, CSS, JavaScript, TypeScript" />
+          <CardData label="Frontend" content="React, Next.js, Tailwind CSS, HTML, CSS, JavaScript, TypeScript" />
+        </CardGroup>  
+        <p>Interested in working together on a project or upgrading your existing business&apos;s website? Contact me for affordable rates, flexible to your budget.</p>
+      </DetailsCard>,
+  },
+  {
+    id: 'contact',
+    label: 'Contact Info',
+    content: <DetailsCard title="Let's Collaborate" note="SWYgeW91J3JlIHJlYWRpbmcgdGhpcywgbGV0J3MgY2hhdA==" className="max-w-2xl">
+        <p>Whether you have a project in mind, a question, or just want to say hi, I’m here to help.</p>
+        <CardGroup gap={8}>
+          <p>Stuff goes here.</p>
+        </CardGroup>  
+        <p><i>Looking forward to hearing from you!</i></p>
+      </DetailsCard>,
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <main className="flex flex-col items-start justify-start max-w-5xl mx-auto">
+      <JumpInText as="h1" className="mb-10" text="Home Page" />
+      
+      <ViewingBox items={items}/>
+    </main>
   );
 }

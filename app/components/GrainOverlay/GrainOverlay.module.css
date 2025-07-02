@@ -1,0 +1,48 @@
+.grainCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.15) 70%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  mix-blend-mode: multiply;
+}
+
+
+@media (max-width: 1024px) {
+  .vignette {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0.1) 70%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .vignette {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0.075) 70%,
+      rgba(0, 0, 0, 0.15) 100%
+    );
+  }
+}

@@ -1,0 +1,186 @@
+/* Wrapper for the link that handles fade-in animation */
+.menu-link-wrapper {
+  display: inline-block;
+  opacity: 0;
+  /* Optionally add transform origin or anything else */
+}
+
+
+
+/* Fade-in animation class applied once on mount */
+.animate {
+  animation-name: fadeInScale;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-delay: var(--delay, 0s);
+}
+
+/* The link itself */
+.menu-link {
+  --cream-color: #C4BEA8;
+  position: relative;
+  display: inline-block;
+  /* background-color: var(--cream-color); */
+  color: var(--color-text);
+  overflow: visible;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+
+  /* normal visible state */
+  opacity: 1;
+  transition: color 0.3s ease-out, background-color 0.3s ease-out;
+
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 1440px) {
+  .menu-link {
+    font-size: 1.35rem;
+  }
+}
+
+
+@media (max-width: 1280px) {
+  .menu-link {
+    font-size: 1.25rem;
+  }
+}
+
+
+/* Medium screens (≥ 768px) */
+@media (max-width: 1024px) {
+  .menu-link {
+    font-size: 1.15rem;
+  }
+}
+
+
+/* Hover effect on the link text color */
+.menu-link:hover {
+  color: var(--cream-color);
+}
+
+/* Background fill sliding in from left */
+.menu-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 0;
+  height: calc(100% - 6px);
+  background-color: #4D493E;
+  transition: none;
+  
+  z-index: -1;
+}
+
+/* Background fill expands on hover */
+.menu-link:hover::before {
+  width: 100%;
+  transition: width 0.3s ease-out;
+}
+
+.menu-link > * {
+  position: relative; /* ensures text is above .menu-link-bg */
+  z-index: 1;
+}
+
+.menu-link-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0; /* top/right/bottom/left = 0 */
+  background-color: var(--cream-color);
+  z-index: -2;  /* behind text */
+}
+
+/* Top and bottom border elements inside the link */
+.border-top,
+.border-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-text);
+  pointer-events: none;
+  z-index: 1;
+
+  opacity: 0;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+/* Top border initial position (above link) */
+.border-top {
+  top: 0;
+  transform: translateY(200%);
+}
+
+/* Bottom border initial position (below link) */
+.border-bottom {
+  bottom: 0;
+  transform: translateY(-200%);
+}
+
+/* On hover, slide borders into view */
+.menu-link:hover .border-top,
+.menu-link:hover .border-bottom {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Active state styling for link */
+.active {
+  background-color: #4D493E;
+  color: #BCB7A2;
+  animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+/* Active box growing down from link */
+.activeBox {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 0;
+  background-color: #4D493E;
+  animation: growDown 0.3s ease forwards;
+  animation-delay: 0.15s;
+  z-index: -1;
+}
+
+/* Animations */
+
+/* Fade-in and scale animation for wrapper */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Active box grow-down animation */
+@keyframes growDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: 24px; /* same as bottom offset */
+  }
+}
+
+/* Glow pulse animation for active link */
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}

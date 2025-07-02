@@ -1,26 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700&display=swap');
 @import "tailwindcss";
 
+/* Custom variables and styles */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg: #C8C2AD;
+  --color-text: #4D493E;
+  --color-muted: #9E9885;
+  --color-accent: #4D493E;
+  --color-warm: #9E9885;
+
+  --cream-color: #b8b39c;
+
+  --btn-primary-bg: var(--color-muted);
+  --btn-primary-text: var(--color-text);
+  --btn-primary-bg-hover: #877f68;
+  --btn-secondary-bg: transparent;
+  --btn-secondary-text: var(--color-accent);
+  --btn-secondary-border: var(--color-accent);
+
+  --letter-spacing-wide: 0.1rem;
+  --letter-spacing-wider: 0.7rem;
+  --text-shadow-subtle: 0.3rem 0.3rem 0 rgba(77, 73, 62, 0.3);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html, body {
+  @apply m-0 p-0 flex flex-col min-h-screen;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Noto Sans', sans-serif;
+  letter-spacing: var(--letter-spacing-wide);
+  line-height: 1.6;
+
+  background-size: 4px 4px;
+  background-image: 
+    linear-gradient(90deg, transparent, transparent 3px, rgba(0,0,0,0.07) 4px),
+    linear-gradient(transparent, transparent 3px, rgba(0,0,0,0.07) 4px);
+
+  box-shadow: inset 0 0 150px rgba(77, 73, 62, 0.4), inset 0 0 150px rgba(77, 73, 62, 0.3);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+h1 {
+  @apply uppercase font-light;
+  font-size: 2.5rem;
+  letter-spacing: var(--letter-spacing-wider);
+  text-shadow: var(--text-shadow-subtle);
+  color: var(--color-text);
+}
+
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 2rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+h2 {
+  @apply font-bold;
+  font-size: 2rem;
+  margin-top: 2.5em;
+  margin-bottom: 0.5em;
+  color: var(--color-accent);
+}
+
+.header-styled {
+  letter-spacing: var(--letter-spacing-wider);
+  text-shadow: var(--text-shadow-subtle);
+  color: var(--color-text);
+}
+
+p {
+  
+  font-size: 1.25rem;
+  line-height: 2rem;
+  margin-bottom: 1em;
+  color: var(--color-text);
+}
+
+button {
+  @apply font-bold rounded px-4 py-1;
+  cursor: pointer;
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 400;
+  background-color: var(--color-muted);
+  color: var(--color-text);
+  position: relative;
+  box-sizing: content-box;
+  border-left: none;
+  border-right: none;
+  border: none;
+  border-radius: 0px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button.primary {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: none;
+}
+
+button.primary:hover {
+  background-color: var(--btn-primary-bg-hover);
+}
+
+button.secondary {
+  background-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 0px solid var(--btn-secondary-border);
+}
+
+button.secondary:hover {
+  background-color: var(--color-accent);
+  color: var(--btn-primary-text);
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 3px;
+  bottom: 3px;
+  width: 0;
+  background-color: var(--color-text);
+  transition: width 0.2s;
+}
+
+button:hover::before,
+button:focus::before {
+  width: 100%;
+}
+
+main {
+  @apply container max-w-7xl mx-auto flex-1 px-4 py-8 pb-20;
+}
+
+.menu-link {
+  position: relative;
+  display: inline-block;
+  background-color: #C8C2AD;
+  overflow: hidden;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: color 0.3s ease;
+  z-index: 0;
+  cursor: pointer;
+  opacity: 0;
+  transition: color 0.3s ease-out, background-color 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.animate {
+  animation-name: fadeInScale;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+.menu-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 0;
+  background-color: #4D493E;
+  transition: height 0.3s ease;
+  z-index: -1;
+}
+
+.menu-link:hover::before {
+  height: 100%;
+}
+
+.menu-link:hover {
+  color: white; /* optional: text color change on hover */
 }
