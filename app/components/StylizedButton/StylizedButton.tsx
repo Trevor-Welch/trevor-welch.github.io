@@ -13,6 +13,7 @@ interface StylizedButtonProps {
   active?: boolean;
   animationDelay?: number;
   block?: boolean;
+  inline?: boolean;
 }
 
 export default function StylizedButton({
@@ -24,6 +25,7 @@ export default function StylizedButton({
   active = false,
   animationDelay = 0,
   block = false,
+  inline = false
 }: StylizedButtonProps) {
   const [hasMounted, setHasMounted] = useState(false);
 
@@ -37,6 +39,7 @@ export default function StylizedButton({
   const buttonClassNames = [styles.button, styles[variant]];
   if (active) buttonClassNames.push(styles.active);
   if (block) wrapperClassNames.push(styles.block);
+  if (inline) wrapperClassNames.push(styles.inline);
 
   return (
     <div

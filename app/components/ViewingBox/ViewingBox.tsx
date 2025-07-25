@@ -113,7 +113,7 @@ export default function ViewingBox({ items, defaultId, className = '' }: Viewing
 
   return (
     <div
-      className={`flex flex-col items-start md:flex-row gap-8 md:gap-0 w-full mx-auto min-h-[400px] ${className} ${styles.viewingBox}`}
+      className={`flex flex-col items-start md:flex-row gap-8 md:gap-0 w-full mx-auto min-h-[500px] ${className} ${styles.viewingBox}`}
     >
       {/* Left menu */}
       <div className="flex items-stretch w-full md:w-1/3 pr-0 md:pr-6">
@@ -135,7 +135,6 @@ export default function ViewingBox({ items, defaultId, className = '' }: Viewing
                 label={item.label}
                 active={isActive}
                 animationDelay={i * 0.2}
-                onMouseEnter={() => setActiveId(item.id)}
                 onClick={() => setActiveId(item.id)}
                 scrambleText={true}
               />

@@ -17,6 +17,10 @@
 .viewingBox :global(p:last-of-type) {
     margin-bottom: 0px;
     justify-self: flex-start;
+} 
+
+.viewingBox {
+  transition: 0.3 all;
 }
 
 @keyframes flairIn {

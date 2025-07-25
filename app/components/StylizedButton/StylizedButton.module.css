@@ -3,6 +3,12 @@
   display: block;
 }
 
+.inline {
+  width: auto;
+  display: inline-block;
+  align-self: start;
+}
+
 .button-wrapper {
   opacity: 1;
   display: inline-block;

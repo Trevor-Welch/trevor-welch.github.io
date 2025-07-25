@@ -10,17 +10,24 @@ const items: ViewingBoxItem[] = [
   {
     id: 'intro',
     label: 'Intro',
-    content: <DetailsCard title="Introductory Message" note="SGVsbG8gV29ybGQ=" className="max-w-4xl">
+    content: <DetailsCard title="introductoryMessage.exe" note="SGVsbG8gV29ybGQ=" className="max-w-4xl">
         <CardGroup gap={16}>
-          <p>Welcome!</p>
-          <p>I’m Trevor Welch, a freelance web developer based in Raleigh, NC. I’m passionate about crafting websites that make the internet a more beautiful and engaging place to explore.</p>
-          <p>I’ve helped over 40 clients turn their underperforming websites into solid sales funnels that actually bring in traffic and sales — with designs unique to them, no boring cookie-cutter stuff here.</p>
-          <p>I’ve also contributed to an open-source project that got some love from Forbes and enjoyed supporting a handful of non-profits to boost their online presence.</p>
-          <p>For me, my favorite projects are one where we have chance to shake things up.</p>
-          <p>I could yap more about myself, but let’s get you where you want to be.</p>
-        
+          <p>Welcome to my corner of the web.</p>
+          <p>I&apos;m Trevor Welch, an end-to-end software developer based in Raleigh, NC.</p>
+          <p>My passion is to help make life easier for others through the use of technology - regardless if I&apos;m making a website for someone&apos;s business, creating a script for a Raspberry Pi, or contributing to open source tools.</p>
+          <p>I&apos;ve helped over 40 clients in my 10+ years of experience, including: An artist&apos;s online shop, an aquatic pet store&apos;s e-commerce storefront, a non-profit helping implement recycling infrastructure in my city, a large-scale convention with thousands of people, and more.</p>
+          <p>I truly believe there are people in the world doing great things. They just need some help being seen.</p>
+          <p>That&apos;s where I help.</p>
+          <p>If you need someone who is passionate about what they do, is versed in multiple programming languages and libraries to help bring your idea to life, and has experience handling projects solo or in a team-environment, consider reaching out.</p>
+          <StylizedButton
+            label='"Let&apos;s Chat"'
+            href="/contact"
+            variant="dark"
+            inline
+          />
         </CardGroup>
-        <CardGroup gap={16} row>
+        <CardGroup gap={16}>
+          <p>Anyways, where are we going?</p>
           <StylizedButton
             label='"Show Me Your Past Projects"'
             href="/projects"
@@ -36,45 +43,49 @@ const items: ViewingBoxItem[] = [
 
 
           <StylizedButton
-            label='"Actually, I Want To Learn More About You"'
+            label='"I Want To Learn More About You"'
             href="/about"
             variant="dark" 
           />
 
         </CardGroup>  
-        <CardGroup >
-          <p>Interested in collaborating on a project or upgrading your business’s website? Get in touch for affordable rates.</p>
-          <CardGroup row>
-            <StylizedButton
-            label='"Let’s Chat"'
-            href="/contact"
-            variant="dark"
-          />
-          </CardGroup>
-        </CardGroup>
       </DetailsCard>
   },
   {
     id: 'skills',
     label: 'Skills',
-    content: <DetailsCard title="Knowledge Base" note="SG93IG11Y2ggZG8geW91IGtub3c/" className="max-w-4xl">
+    content: <DetailsCard title="skillsOverview.exe" note="SG93IG11Y2ggZG8geW91IGtub3c/" className="max-w-4xl">
         <CardGroup gap={16}>
-          <p><i>No flashy bar graphs here measuring how proficient I feel in every trendy technology.</i> I&apos;d rather keep it simple.</p>
-          <p>If it’s listed below, rest assured: I can deploy it in a production environment without breaking the build — probably. Think of this as a straightforward inventory of the tools on my toolbelt, not a self-esteem exercise.</p>
+          <p><i>Let&apos;s keep it simple.</i></p>
+          <p>If it&apos;s listed below, rest assured: I can use it in a production environment without breaking anything. This is a quick list of the tools on my toolbelt.</p>
         </CardGroup>
-        <CardGroup gap={8}>
-          <CardData label="Frontend" content="React, Next.js, Tailwind CSS, HTML, CSS, JavaScript, TypeScript" />
-          <CardData label="Frontend" content="React, Next.js, Tailwind CSS, HTML, CSS, JavaScript, TypeScript" />
-          <CardData label="Frontend" content="React, Next.js, Tailwind CSS, HTML, CSS, JavaScript, TypeScript" />
+        <CardGroup gap={16}>
+          <CardData label="Soft Skills" content="Project Management, Client Communication, Complex Problem Solving, Remote Collaboration, Documentation" />
+          <CardData label="Front-end" content="Elementor, React, Vue, Tailwind CSS, HTML, CSS, JavaScript, TypeScript" />
+          <CardData label="Back-end" content="WordPress, Next.js, Laravel, PHP, Python, Node.js" />
+          <CardData label="Cloud" content="Netlify, Vercel, GitHub Actions, Cloudflare Workers, Firebase, GoDaddy, WP Engine" />
+          <CardData label="Tools" content="Git, GitHub, Figma, VS Code, Slack, Notion, Google Workspace" />
+          <CardData label="Analytics" content="Google Analytics, Google Search Console, Google Tag Manager, Hotjar, Meta Pixel" />
         </CardGroup>  
-        <p>Interested in working together on a project or upgrading your existing business&apos;s website? Contact me for affordable rates, flexible to your budget.</p>
+        <CardGroup gap={16}>
+          <StylizedButton
+            label='"Can I see something more like a resume?"'
+            href="/resume"
+            variant="dark"
+          />
+          <StylizedButton
+            label='"We should collaborate. Let&apos;s chat!'
+            href="/contact"
+            variant="dark"
+          />
+        </CardGroup>
       </DetailsCard>,
   },
   {
     id: 'contact',
     label: 'Contact Info',
-    content: <DetailsCard title="Let's Collaborate" note="SWYgeW91J3JlIHJlYWRpbmcgdGhpcywgbGV0J3MgY2hhdA==" className="max-w-2xl">
-        <p>Whether you have a project in mind, a question, or just want to say hi, I’m here to help.</p>
+    content: <DetailsCard title="contactMe.exe" note="SWYgeW91J3JlIHJlYWRpbmcgdGhpcywgbGV0J3MgY2hhdA==" className="max-w-2xl">
+        <p>Whether you have a project in mind, a question, or just want to say hi, I&apos;m here to help.</p>
         <CardGroup gap={8}>
           <p>Stuff goes here.</p>
         </CardGroup>  
