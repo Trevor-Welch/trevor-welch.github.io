@@ -174,3 +174,12 @@ main {
 .menu-link:hover {
   color: white; /* optional: text color change on hover */
 }
+
+
+@layer utilities {
+  input:-webkit-autofill,
+  textarea:-webkit-autofill {
+    @apply bg-gray-100 text-black;
+    box-shadow: 0 0 0px 1000px #f0f0f0 inset;
+  }
+}
