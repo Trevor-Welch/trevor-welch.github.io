@@ -36,7 +36,10 @@ export default function ContactForm({ actionUrl }: ContactFormProps) {
     try {
       const response = await fetch(actionUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer a98f3249823fh9df32f9hf932h9f23h9',
+        },
         body: JSON.stringify(formData),
       });
 
