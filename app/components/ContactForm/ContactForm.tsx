@@ -124,7 +124,7 @@ export default function ContactForm({ actionUrl = "https://trevorjwelch.com/api/
       </label>
 
       <ReCAPTCHA
-        sitekey="6LfDipkrAAAAAPYrvWHUReSzwbkMhy7kz33XWhfG"
+        sitekey="6LdHi5krAAAAAMj_vZYjDXwbB31ccofE2Vj0sha5"
         onChange={onCaptchaChange}
         ref={recaptchaRef}
       />
