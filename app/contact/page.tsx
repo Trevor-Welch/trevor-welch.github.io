@@ -13,7 +13,7 @@ export default function Home() {
         style={{ fontFamily: "'Noto Sans', sans-serif" }}
       >
         <p className="text-lg mb-6 text-gray-900">
-          Let's connect! Whether you have a project in mind, a question, or just want to say hi, I'm here to help.
+          Let&apos;s connect! Whether you have a project in mind, a question, or just want to say hi, I&apos;m here to help.
         </p>
         <ContactForm />
       </div>

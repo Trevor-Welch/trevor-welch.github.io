@@ -3,9 +3,7 @@ import ViewingBox, { ViewingBoxItem } from '@/app/components/ViewingBox/ViewingB
 import JumpInText from '@/app/components/JumpInText/JumpInText';
 import DetailsCard from '@/app/components/DetailsCard/DetailsCard';
 import CardGroup from '@/app/components/CardGroup/CardGroup';
-import CardData from '@/app/components/CardData/CardData';
 import StylizedButton from '@/app/components/StylizedButton/StylizedButton';
-import ContactForm from '@/app/components/ContactForm/ContactForm';
 
 const items: ViewingBoxItem[] = [
   {
