@@ -1,6 +1,7 @@
 'use client';
 
 import PatternDivider from '../PatternDivider/PatternDivider';
+import { LINKS } from '@/lib/links';
 
 export default function Footer() {
   return (
@@ -50,7 +51,7 @@ export default function Footer() {
         {/* Right Side */}
         <div className="flex gap-4">
           <a
-            href="https://twitter.com/yourhandle"
+            href={LINKS.twitter}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Twitter"
@@ -67,7 +68,7 @@ export default function Footer() {
             </svg>
           </a>
           <a
-            href="https://github.com/yourhandle"
+            href={LINKS.github}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"

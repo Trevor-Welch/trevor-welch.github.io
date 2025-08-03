@@ -9,10 +9,10 @@ type FormData = {
 };
 
 type ContactFormProps = {
-  actionUrl: string;
+  actionUrl?: string;
 };
 
-export default function ContactForm({ actionUrl }: ContactFormProps) {
+export default function ContactForm({ actionUrl = "https://trevorjwelch.com/api/contact" }: ContactFormProps) {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',

@@ -1,10 +1,11 @@
 "use client";
-import ViewingBox, { ViewingBoxItem } from './components/ViewingBox/ViewingBox';
-import JumpInText from './components/JumpInText/JumpInText';
-import DetailsCard from './components/DetailsCard/DetailsCard';
-import CardGroup from './components/CardGroup/CardGroup';
-import CardData from './components/CardData/CardData';
-import StylizedButton from './components/StylizedButton/StylizedButton';
+import ViewingBox, { ViewingBoxItem } from '@/app/components/ViewingBox/ViewingBox';
+import JumpInText from '@/app/components/JumpInText/JumpInText';
+import DetailsCard from '@/app/components/DetailsCard/DetailsCard';
+import CardGroup from '@/app/components/CardGroup/CardGroup';
+import CardData from '@/app/components/CardData/CardData';
+import StylizedButton from '@/app/components/StylizedButton/StylizedButton';
+import ContactForm from '@/app/components/ContactForm/ContactForm';
 
 const items: ViewingBoxItem[] = [
   {
@@ -86,10 +87,7 @@ const items: ViewingBoxItem[] = [
     label: 'Contact Info',
     content: <DetailsCard title="contactMe.exe" note="SWYgeW91J3JlIHJlYWRpbmcgdGhpcywgbGV0J3MgY2hhdA==" className="max-w-2xl">
         <p>Whether you have a project in mind, a question, or just want to say hi, I&apos;m here to help.</p>
-        <CardGroup gap={8}>
-          <p>Stuff goes here.</p>
-        </CardGroup>  
-        <p><i>Looking forward to hearing from you!</i></p>
+        <ContactForm />
       </DetailsCard>,
   },
 ];

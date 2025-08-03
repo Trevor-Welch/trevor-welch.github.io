@@ -40,6 +40,7 @@ export default function Header() {
         </div>
       </div>
       <PatternDivider direction="right-to-left" />
+      
     </header>
   );
 }
