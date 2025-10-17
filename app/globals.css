@@ -2,36 +2,71 @@
 
 @import "tailwindcss";
 
-/* Custom variables and styles */
 
 :root {
-  --color-bg: #C8C2AD;
-  --color-text: #4D493E;
-  --color-muted: #9E9885;
-  --color-accent: #4D493E;
-  --color-warm: #9E9885;
+  /* Color Palette */
+  --color-white: #ebebeb;
+  --color-not-white: #dbdbdb;
+  --color-not-black: #3d3d3d;
+  --color-light-gray: #bbbbbb;
+  --color-dark-gray: #494949;
+  --color-transparent: transparent;
 
-  --cream-color: #b8b39c;
+  /* Semantic Colors */
+  --color-bg: var(--color-not-white);
+  --color-text: var(--color-not-black);
+  --color-light-text: var(--color-white);
 
-  --btn-primary-bg: var(--color-muted);
-  --btn-primary-text: var(--color-text);
-  --btn-primary-bg-hover: #877f68;
+  /* Accent Colors */
+  --color-muted: var(--color-light-gray);
+  --color-accent: var(--color-not-black);
+  --color-warm: var(--color-dark-gray);
+
+  /* Additional Colors */
+  --color-old-cream: #b8b39c;
+  --cream-color: var(--color-old-cream);
+
+
+  /* Button Colors */
+  --btn-primary-bg: var(--color-not-black);
+  --btn-primary-text: var(--color-light-text);
+  --btn-primary-bg-hover: var(--color-white);
+  --btn-primary-text-hover: var(--color-text);
+
   --btn-secondary-bg: transparent;
-  --btn-secondary-text: var(--color-accent);
-  --btn-secondary-border: var(--color-accent);
+  --btn-secondary-bg-hover: transparent;
+  --btn-secondary-text: var(--color-text);
+  --btn-secondary-text-hover: var(--color-text);
+  --btn-secondary-border: var(--color-not-black);
 
-  --letter-spacing-wide: 0.1rem;
+  /* Other Variables */
+  --letter-spacing-default: 0.1rem;
+  --letter-spacing-wide: 0.2rem;
   --letter-spacing-wider: 0.7rem;
   --text-shadow-subtle: 0.3rem 0.3rem 0 rgba(77, 73, 62, 0.3);
+
+  /* Layout Variables */
+  --max-content-width: 1200px;
+
+  --screen-width-small: 640px;
+  --screen-width-medium: 768px;
+  --screen-width-large: 1024px;
+  --screen-width-xlarge: 1280px;
+  --screen-width-xxlarge: 1536px;
 }
 
 html, body {
-  @apply m-0 p-0 flex flex-col min-h-screen;
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: 'Noto Sans', sans-serif;
-  letter-spacing: var(--letter-spacing-wide);
+  letter-spacing: var(--letter-spacing-default);
   line-height: 1.6;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 
   background-size: 4px 4px;
   background-image: 
@@ -42,11 +77,10 @@ html, body {
 }
 
 h1 {
-  @apply uppercase font-light;
+  text-transform: uppercase;
   font-size: 2.5rem;
   letter-spacing: var(--letter-spacing-wider);
   text-shadow: var(--text-shadow-subtle);
-  color: var(--color-text);
 }
 
 @media (max-width: 1024px) {
@@ -56,34 +90,24 @@ h1 {
 }
 
 h2 {
-  @apply font-bold;
+  font-weight: bold;
   font-size: 2rem;
-  margin-top: 2.5em;
-  margin-bottom: 0.5em;
-  color: var(--color-accent);
-}
-
-.header-styled {
-  letter-spacing: var(--letter-spacing-wider);
-  text-shadow: var(--text-shadow-subtle);
-  color: var(--color-text);
+  margin-top: 0.5em;
+  margin-bottom: 0em;
 }
 
 p {
-  
   font-size: 1.25rem;
-  line-height: 2rem;
+  line-height: 2.5rem;
   margin-bottom: 1em;
-  color: var(--color-text);
 }
 
 button {
-  @apply font-bold rounded px-4 py-1;
   cursor: pointer;
   font-family: 'Noto Sans', sans-serif;
   font-weight: 400;
-  background-color: var(--color-muted);
-  color: var(--color-text);
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
   position: relative;
   box-sizing: content-box;
   border-left: none;
@@ -93,14 +117,9 @@ button {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-button.primary {
-  background-color: var(--btn-primary-bg);
-  color: var(--btn-primary-text);
-  border: none;
-}
-
-button.primary:hover {
+button:hover {
   background-color: var(--btn-primary-bg-hover);
+  color: var(--btn-primary-text-hover)
 }
 
 button.secondary {
@@ -110,8 +129,8 @@ button.secondary {
 }
 
 button.secondary:hover {
-  background-color: var(--color-accent);
-  color: var(--btn-primary-text);
+  background-color: var(--btn-secondary-bg-hover);
+  color: var(--btn-secondary-text-hover);
 }
 
 button::before {
@@ -122,7 +141,7 @@ button::before {
   top: 3px;
   bottom: 3px;
   width: 0;
-  background-color: var(--color-text);
+  background-color: var(--btn-primary-bg-text);
   transition: width 0.2s;
 }
 
@@ -130,6 +149,47 @@ button:hover::before,
 button:focus::before {
   width: 100%;
 }
+
+
+#page-body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+
+  @media (width >= 640px) {
+    max-width: 640px;
+  }
+
+  @media (width >=  768px) {
+    max-width: 768px;
+  }
+
+  @media (width >=  1024px) {
+    max-width: 1024px;
+  }
+
+  @media (width >=  1280px) {
+    max-width: 1280px;
+  }
+
+  @media (width >=  1536px) {
+    max-width: 1536px;
+  }
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+
+
+
 
 main {
   @apply container max-w-7xl mx-auto flex-1 px-4 py-8 pb-20;

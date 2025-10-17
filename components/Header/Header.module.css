@@ -1,0 +1,58 @@
+.header-contents {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  overflow:hidden;
+  margin:0 auto;
+  padding: 16px;
+
+  @media (width >= 640px) {
+    max-width: 640px;
+  }
+
+  @media (width >=  768px) {
+    max-width: 768px;
+  }
+
+  @media (width >=  1024px) {
+    max-width: 1024px;
+  }
+
+  @media (width >=  1280px) {
+    max-width: 1280px;
+  }
+
+  @media (width >=  1536px) {
+    max-width: 1536px;
+  }
+
+  nav {
+    display: none;
+    gap: 16px;
+
+    @media (width >= 768px) {
+      display: flex;
+    }
+  }
+}
+
+
+.logotext {
+  font-size: 1.35rem;
+  letter-spacing: var(--letter-spacing-wide);
+  text-shadow: var(--text-shadow-subtle);
+
+  @media (width >= 340px) {
+    font-size: 1.75rem;
+    letter-spacing: var(--letter-spacing-wider);
+  }
+
+  @media (width >=  768px) {
+    font-size: 1.35rem;
+  }
+
+  @media (width >=  1024px) {
+    font-size: 1.75rem;
+  }
+}

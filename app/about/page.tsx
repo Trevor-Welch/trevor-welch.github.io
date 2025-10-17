@@ -1,16 +1,18 @@
 "use client";
-import ViewingBox, { ViewingBoxItem } from '@/app/components/ViewingBox/ViewingBox';
-import JumpInText from '@/app/components/JumpInText/JumpInText';
-import DetailsCard from '@/app/components/DetailsCard/DetailsCard';
-import CardGroup from '@/app/components/CardGroup/CardGroup';
-import StylizedButton from '@/app/components/StylizedButton/StylizedButton';
+import PanelContainer, { PanelContainerItem } from '@/components/PanelContainer/PanelContainer';
+import JumpInText from '@/components/JumpInText/JumpInText';
+import InfoBox from '@/components/InfoBox/InfoBox';
+import CardGroup from '@/components/CardGroup/CardGroup';
+import StylizedButton from '@/components/StylizedButton/StylizedButton';
 
-const items: ViewingBoxItem[] = [
+export default function Home() {
+
+const items: PanelContainerItem[] = [
   {
     id: 'professional',
     label: 'Professional Life',
     content: 
-    <DetailsCard title="career.txt" note="10+ years in the field" className="max-w-4xl">
+    <InfoBox title="career.txt" note="10+ years in the field">
       <CardGroup gap={16}>
         <p>Over the past decade, I’ve worked across a wide range of technical and creative projects — often serving as the go-to person for anything web or automation related.</p>
 
@@ -27,13 +29,13 @@ const items: ViewingBoxItem[] = [
 
         <p>Currently, I’m focused on improving my skills further and seeking a larger team to collaborate on. My goal is to be a part of a team solving problems one person could not handle alone.</p>
       </CardGroup>
-    </DetailsCard>
+    </InfoBox>
   },
   {
     id: 'journey',
     label: 'My Journey',
     content: 
-      <DetailsCard title="journey.txt" note="10+ years in the field" className="max-w-4xl">
+      <InfoBox title="journey.txt" note="10+ years in the field">
       <CardGroup gap={16}>
         <p>I didn&rsquo;t <i>set out</i> to become a developer in the traditional sense. I just liked the limitless possibility of computers. At ten, I was writing mods for video games without realizing I <em>was</em> coding. Later, I went to school for IT, but after losing my father, I left and kept teaching myself instead.</p>
 
@@ -43,13 +45,13 @@ const items: ViewingBoxItem[] = [
 
         <p>Now, I&rsquo;m back to freelance work &mdash; helping people bring their products, services, and ideas online. Whether it&rsquo;s solving bugs, launching something new, or just making tech feel less intimidating, I enjoy helping others use web-based solutions to solve real-world problems.</p>
       </CardGroup>
-    </DetailsCard>
+    </InfoBox>
   },
   {
     id: 'stack',
     label: 'What I Use',
     content: 
-      <DetailsCard title="stack.txt" note="Tools I trust in production" className="max-w-4xl">
+      <InfoBox title="stack.txt" note="Tools I trust in production">
         <CardGroup gap={16}>
           <p>
             I try not to get too attached to tools, as new ones are created every month it feels, but I do have favorites. Whether I’m spinning up a React app, wrangling WordPress to do my bidding, or automating something locally with Python, I use what gets the job done cleanly.
@@ -62,12 +64,12 @@ const items: ViewingBoxItem[] = [
             <li><strong>Analytics:</strong> GA4, Search Console, Tag Manager, Hotjar, Meta Pixel</li>
           </ul>
         </CardGroup>
-      </DetailsCard>
+      </InfoBox>
   },
   {
     id: 'favorites',
     label: 'Favorite Projects',
-    content: <DetailsCard title="introductoryMessage.exe" note="SGVsbG8gV29ybGQ=" className="max-w-4xl">
+    content: <InfoBox title="introductoryMessage.exe" note="SGVsbG8gV29ybGQ=">
         <CardGroup gap={16}>
           <p>Welcome to my corner of the web.</p>
           <p>I&apos;m Trevor Welch, an end-to-end software developer based in Raleigh, NC.</p>
@@ -77,29 +79,30 @@ const items: ViewingBoxItem[] = [
           <p>That&apos;s where I help.</p>
           <p>If you need someone who is passionate about what they do, is versed in multiple programming languages and libraries to help bring your idea to life, and has experience handling projects solo or in a team-environment, consider reaching out.</p>
           <StylizedButton
+            effect="glitch"
             label='"Let&apos;s Chat"'
             href="/contact"
             variant="dark"
             inline
           />
         </CardGroup>
-      </DetailsCard>
+      </InfoBox>
   },
   {
     id: 'collaborating',
     label: 'Working With Me',
     content: 
-      <DetailsCard title="collaborating.txt" note="What to expect if we team up" className="max-w-3xl">
+      <InfoBox title="collaborating.txt" note="What to expect if we team up">
         <CardGroup>
           <p>When working with me, you&rsquo;ll find someone who values clear deadlines and careful planning&mdash;habits I sharpened as an event coordinator and carried into technical project management.</p>
           <p>Keeping everyone aligned, whether clients or teammates, is key. I lean on tools like Slack and Asana to make sure nothing gets lost in the chaos. I enjoy digging into analytics and optimizing workflows, but the real value I bring is a deep understanding of code across multiple languages, helping others turn ideas into reality without confusion.</p>
         </CardGroup>
-      </DetailsCard>
+      </InfoBox>
   },
   {
     id: 'me',
     label: 'Beyond Code',
-    content: <DetailsCard title="me.txt" note="SGVsbG8gV29ybGQ=" className="max-w-4xl">
+    content: <InfoBox title="me.txt" note="SGVsbG8gV29ybGQ=">
         <CardGroup gap={16}>
           <p>
             I grew up in a military family, constantly moving and rarely staying in one place long enough to build lasting friendships. So I found my community online. I was always on the internet, exploring the latest websites, playing games, and eventually building my own spaces just for fun. I loved how easy it was to share what I made and how many people could access it. That love never really went away.
@@ -108,17 +111,20 @@ const items: ViewingBoxItem[] = [
             Today, the world lives online, and my passion for creating things for my own screen has become a career of crafting experiences for everyone’s. I still enjoy playing games (sometimes competitively) and spinning up little side projects just for the joy of it. These days, though, I spend more time hiking with my wife, learning about local nature, and, of course, making sure the bills get paid.
           </p>
         </CardGroup>
-      </DetailsCard>
+      </InfoBox>
   },
   
 ];
 
-export default function Home() {
   return (
-    <main className="flex flex-col items-start justify-start max-w-5xl mx-auto">
-      <JumpInText as="h1" className="mb-10" text="About Me" />
+    <main className="page-container">
+      <JumpInText
+        text="About Me"
+        as="h1"
+        className="mb-10"
+      />
       
-      <ViewingBox items={items}/>
+      <PanelContainer items={items}/>
     </main>
   );
 }

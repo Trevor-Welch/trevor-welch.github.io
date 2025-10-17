@@ -1,0 +1,51 @@
+/* /components/InfoBox/InfoBox.module.css */
+
+.infoBox {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  background-color: var(--color-white);
+  color: var(--color-text);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  overflow: hidden;
+}
+
+.titleBar {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  padding: 0.75rem 1.5rem;
+  font-size: 1.125rem;
+  letter-spacing: 0.1em;
+}
+
+.content {
+  padding: 1.5rem;
+  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.content > * + * {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-not-white);
+}
+
+.note {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--color-not-white);
+}
+
+/* Image styles */
+.content :global(img) {
+  background-color: var(--color-text);
+  filter: url('/filters.svg#splotchyEffect') grayscale(100%) sepia(70%) brightness(1.1) contrast(1.05);
+}
+
+/* Paragraph styles */
+.content :global(p) {
+  margin-bottom: 0;
+}

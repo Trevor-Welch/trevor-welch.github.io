@@ -1,12 +1,14 @@
 'use client';
 
-import ContactForm from '../components/ContactForm/ContactForm'; // adjust path as needed
+import StylizedButton from '@/components/StylizedButton/StylizedButton';
 
-export default function ContactPage() {
+export default function TestPage() {
+
   return (
     <div style={{ maxWidth: '500px', margin: '40px auto', padding: '20px' }}>
-      <h1>Contact Form</h1>
-      <ContactForm actionUrl="https://trevorjwelch.com/api/contact" />
+      <h1>Test</h1>
+      <br></br>
+      <StylizedButton effect="glitch" label="Back to Home" href="/" inline variant='dark'/>
     </div>
   );
 }

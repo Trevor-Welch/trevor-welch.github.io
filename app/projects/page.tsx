@@ -1,15 +1,15 @@
 "use client";
-import ViewingBox, { ViewingBoxItem } from '@/app/components/ViewingBox/ViewingBox';
-import JumpInText from '@/app/components/JumpInText/JumpInText';
-import DetailsCard from '@/app/components/DetailsCard/DetailsCard';
-import CardGroup from '@/app/components/CardGroup/CardGroup';
-import StylizedButton from '@/app/components/StylizedButton/StylizedButton';
+import PanelContainer, { PanelContainerItem } from '@/components/PanelContainer/PanelContainer';
+import JumpInText from '@/components/JumpInText/JumpInText';
+import DetailsCard from '@/components/DetailsCard/DetailsCard';
+import CardGroup from '@/components/CardGroup/CardGroup';
+import StylizedButton from '@/components/StylizedButton/StylizedButton';
 
-const items: ViewingBoxItem[] = [
+const items: PanelContainerItem[] = [
   {
     id: 'recentProjects',
     label: 'Recent Projects',
-    content: <DetailsCard title="introductoryMessage.exe" note="SGVsbG8gV29ybGQ=" className="max-w-4xl">
+    content: <DetailsCard title="introductoryMessage.exe" note="SGVsbG8gV29ybGQ=">
         <CardGroup gap={16}>
           <p>Welcome to my corner of the web.</p>
           <p>I&apos;m Trevor Welch, an end-to-end software developer based in Raleigh, NC.</p>
@@ -30,7 +30,7 @@ const items: ViewingBoxItem[] = [
   {
     id: 'wordpress',
     label: 'WordPress',
-    content: <DetailsCard title="introductoryMessage.exe" note="SGVsbG8gV29ybGQ=" className="max-w-4xl">
+    content: <DetailsCard title="introductoryMessage.exe" note="SGVsbG8gV29ybGQ=">
         <CardGroup gap={16}>
           <p>Welcome to my corner of the web.</p>
           <p>I&apos;m Trevor Welch, an end-to-end software developer based in Raleigh, NC.</p>
@@ -49,9 +49,9 @@ const items: ViewingBoxItem[] = [
       </DetailsCard>
     },
   {
-    id: 'wordpress',
+    id: 'react',
     label: 'React',
-    content: <DetailsCard title="introductoryMessage.exe" note="SGVsbG8gV29ybGQ=" className="max-w-4xl">
+    content: <DetailsCard title="introductoryMessage.exe" note="SGVsbG8gV29ybGQ=">
         <CardGroup gap={16}>
           <p>Welcome to my corner of the web.</p>
           <p>I&apos;m Trevor Welch, an end-to-end software developer based in Raleigh, NC.</p>
@@ -72,7 +72,7 @@ const items: ViewingBoxItem[] = [
   {
     id: 'vue',
     label: 'Vue',
-    content: <DetailsCard title="introductoryMessage.exe" note="SGVsbG8gV29ybGQ=" className="max-w-4xl">
+    content: <DetailsCard title="introductoryMessage.exe" note="SGVsbG8gV29ybGQ=">
         <CardGroup gap={16}>
           <p>Welcome to my corner of the web.</p>
           <p>I&apos;m Trevor Welch, an end-to-end software developer based in Raleigh, NC.</p>
@@ -95,10 +95,14 @@ const items: ViewingBoxItem[] = [
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-start justify-start max-w-5xl mx-auto">
-      <JumpInText as="h1" className="mb-10" text="Projects Showcase" />
+    <main className="page-container">
+      <JumpInText
+        text="Projects Showcase"
+        as="h1"
+        className="mb-10"
+      />
       
-      <ViewingBox items={items}/>
+      <PanelContainer items={items}/>
     </main>
   );
 }

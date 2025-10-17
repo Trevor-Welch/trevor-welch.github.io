@@ -1,20 +1,39 @@
 "use client";
-import ViewingBox, { ViewingBoxItem } from '@/app/components/ViewingBox/ViewingBox';
-import JumpInText from '@/app/components/JumpInText/JumpInText';
-import DetailsCard from '@/app/components/DetailsCard/DetailsCard';
-import CardGroup from '@/app/components/CardGroup/CardGroup';
-import CardData from '@/app/components/CardData/CardData';
-import StylizedButton from '@/app/components/StylizedButton/StylizedButton';
-import ContactForm from '@/app/components/ContactForm/ContactForm';
+import PanelContainer, { PanelContainerItem } from '@/components/PanelContainer/PanelContainer';
+import JumpInText from '@/components/JumpInText/JumpInText';
+import InfoBox from '@/components/InfoBox/InfoBox';
+import CardGroup from '@/components/CardGroup/CardGroup';
+import CardData from '@/components/CardData/CardData';
+import StylizedButton from '@/components/StylizedButton/StylizedButton';
+import ContactForm from '@/components/ContactForm/ContactForm';
+import OpenForWork from '@/components/OpenForWork/OpenForWork';
 
-const items: ViewingBoxItem[] = [
+const items: PanelContainerItem[] = [
   {
     id: 'intro',
     label: 'Intro',
-    content: <DetailsCard title="introductoryMessage.exe" note="SGVsbG8gV29ybGQ=" className="max-w-4xl">
-        <CardGroup gap={16}>
-          <p>Welcome to my corner of the web.</p>
-          <p>I&apos;m Trevor Welch, an end-to-end software developer based in Raleigh, NC.</p>
+    content: <InfoBox title="introductoryMessage.exe" note="SGVsbG8gV29ybGQ="  className="position-relative">
+        <CardGroup gap={16}  className="position-relative">
+          <OpenForWork />
+          <h2>Full-Stack Developer</h2>
+          <p><i className="opacity-50">Welcome to my corner of the internet!</i></p>
+          <p>My name is <b>Trevor Welch</b> and I am an <b>end-to-end software engineer</b> based out of Raleigh, NC, helping local and remote clients alike.</p>
+          <p>I help turn ideas into reality - from simple websites to complex web applications.</p>
+          <div className="flex gap-4 mb-8 mt-4">
+            <StylizedButton
+              label='Past Projects'
+              href="/projects"
+              variant="dark"
+              inline
+            />
+            <StylizedButton
+              label='Let&apos;s Chat'
+              href="/contact"
+              variant="dark"
+              inline
+            />
+          </div>
+          
           <p>My passion is to help make life easier for others through the use of technology - regardless if I&apos;m making a website for someone&apos;s business, creating a script for a Raspberry Pi, or contributing to open source tools.</p>
           <p>I&apos;ve helped over 40 clients in my 10+ years of experience, including: An artist&apos;s online shop, an aquatic pet store&apos;s e-commerce storefront, a non-profit helping implement recycling infrastructure in my city, a large-scale convention with thousands of people, and more.</p>
           <p>I truly believe there are people in the world doing great things. They just need some help being seen.</p>
@@ -46,16 +65,16 @@ const items: ViewingBoxItem[] = [
           <StylizedButton
             label='"I Want To Learn More About You"'
             href="/about"
-            variant="dark" 
+            variant="dark"
           />
 
         </CardGroup>  
-      </DetailsCard>
+      </InfoBox>
   },
   {
     id: 'skills',
     label: 'Skills',
-    content: <DetailsCard title="skillsOverview.exe" note="SG93IG11Y2ggZG8geW91IGtub3c/" className="max-w-4xl">
+    content: <InfoBox title="skillsOverview.exe" note="SG93IG11Y2ggZG8geW91IGtub3c/">
         <CardGroup gap={16}>
           <p><i>Let&apos;s keep it simple.</i></p>
           <p>If it&apos;s listed below, rest assured: I can use it in a production environment without breaking anything. This is a quick list of the tools on my toolbelt.</p>
@@ -80,24 +99,28 @@ const items: ViewingBoxItem[] = [
             variant="dark"
           />
         </CardGroup>
-      </DetailsCard>,
+      </InfoBox>,
   },
   {
     id: 'contact',
     label: 'Contact Info',
-    content: <DetailsCard title="contactMe.exe" note="SWYgeW91J3JlIHJlYWRpbmcgdGhpcywgbGV0J3MgY2hhdA==" className="max-w-2xl">
+    content: <InfoBox title="contactMe.exe" note="SWYgeW91J3JlIHJlYWRpbmcgdGhpcywgbGV0J3MgY2hhdA==">
         <p>Whether you have a project in mind, a question, or just want to say hi, I&apos;m here to help.</p>
         <ContactForm />
-      </DetailsCard>,
+      </InfoBox>,
   },
 ];
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-start justify-start max-w-5xl mx-auto">
-      <JumpInText as="h1" className="mb-10" text="Home Page" />
+    <main className="page-container">
+      <JumpInText
+        text="Home Page"
+        as="h1"
+        className="mb-10"
+        />
       
-      <ViewingBox items={items}/>
+      <PanelContainer items={items}/>
     </main>
   );
 }
