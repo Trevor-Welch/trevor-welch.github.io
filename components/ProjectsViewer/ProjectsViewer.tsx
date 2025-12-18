@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
+//import Image from 'next/image';
 
 // Mock icons - replace with your actual icons
 const SelectorIcon = ({ size = 24, variant = 'dark' }) => (
