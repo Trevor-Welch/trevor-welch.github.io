@@ -7,9 +7,9 @@
   /* Color Palette */
   --color-white: #ebebeb;
   --color-not-white: #dbdbdb;
-  --color-not-black: #3d3d3d;
-  --color-light-gray: #bbbbbb;
-  --color-dark-gray: #494949;
+  --color-not-black: #464646;
+  --color-light-gray: #c0c0c0;
+  --color-dark-gray: #585858;
   --color-transparent: transparent;
 
   /* Semantic Colors */
@@ -70,10 +70,10 @@ html, body {
 
   background-size: 4px 4px;
   background-image: 
-    linear-gradient(90deg, transparent, transparent 3px, rgba(0,0,0,0.07) 4px),
-    linear-gradient(transparent, transparent 3px, rgba(0,0,0,0.07) 4px);
+    linear-gradient(90deg, transparent, transparent 3px, rgba(0,0,0,0.04) 4px),
+    linear-gradient(transparent, transparent 3px, rgba(0,0,0,0.04) 4px);
 
-  box-shadow: inset 0 0 150px rgba(77, 73, 62, 0.4), inset 0 0 150px rgba(77, 73, 62, 0.3);
+  box-shadow: inset 0 0 40px rgba(77, 73, 62, 0.4), inset 0 0 40px rgba(77, 73, 62, 0.3);
 }
 
 h1 {

@@ -1,23 +1,30 @@
+/* components/MenuLink/MenuLink.module.css */
+
 .menu-link-wrapper {
   opacity: 0;
   width: 100%;
+  line-height: 1.6rem;
 }
 
 .animate {
   animation: fadeInScale 0.5s ease-out var(--delay, 0s) forwards;
 }
 
+.dontAnimate {
+  opacity: 1;
+  transform: scale(1) translateX(0);
+}
+
 .menu-link {
   position: relative;
   display: flex;
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 0.7rem;
   color: var(--color-not-black);
   cursor: pointer;
-  transition: color 0.3s ease-out, background-color 0.3s ease-out;
+  transition: color 0.3s ease-out;
   font-size: 1.4rem;
   z-index: 1;
-  overflow: hidden;
-  max-width: 300px;
+  overflow-y: hidden;
 }
 
 @media (max-width: 768px) {
@@ -30,37 +37,48 @@
   color: var(--color-not-white);
 }
 
+/* Fill-behind effect matching HeaderNavLink */
 .menu-link::before {
   content: "";
   position: absolute;
-  inset: 3px 0; /* same top/bottom as before */
-  background-color: var(--color-not-black);
+  left: 0;
+  top: 3px;
+  width: 0;
+  height: calc(100% - 6px);
+  background-color: var(--color-text);
   z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease-out;
+  transition: width 0.1s ease-out;
 }
 
-.menu-link:hover::before,
+.menu-link:hover::before {
+  width: 100%;
+  transition: width 0.2s ease-out;
+}
+
+/* Active state fills immediately without animation */
 .menu-link.active::before {
-  opacity: 1;
+  width: 100%;
+  transition: none;
 }
 
 .menu-link-bg {
   position: absolute;
   inset: 0;
-  background-color: var(--color-white);
+  background-color: var(--color-light-gray);
   z-index: -2;
 }
 
 .squareIndicator {
   display: inline-block;
-  width: 12px;    /* size of the square */
-  height: 12px;
+  width: 1rem;
+  height: 1rem;
   margin-bottom: 1px;
-  margin-right: 12px; /* spacing between square and text */
+  margin-right: 12px;
   background-color: var(--color-text);
   vertical-align: middle;
   transition: background-color 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 
 /* Change background color on hover or active */
@@ -68,7 +86,6 @@
 .menu-link.active .squareIndicator {
   background-color: var(--color-white);
 }
-
 
 .border-top,
 .border-bottom {
@@ -80,6 +97,7 @@
   opacity: 0;
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
   z-index: 1;
+  pointer-events: none;
 }
 
 .border-top {
@@ -101,7 +119,6 @@
 }
 
 .active {
-  background-color: var(--color-not-black);
   color: var(--color-white);
   animation: glowPulse 2.5s ease-in-out infinite;
 }

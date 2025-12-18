@@ -7,6 +7,7 @@ import HeaderNavLink from '@/components/HeaderNavLink/HeaderNavLink';
 import MobileMenu from '@/components/MobileMenu/MobileMenu';
 import JumpInText from '@/components/JumpInText/JumpInText';
 import styles from './Header.module.css';
+import VerticalBarsFlair from '../VerticalBarsFlair/VerticalBarsFlair';
 
 export default function Header() {
   const menuItems = [
@@ -19,20 +20,22 @@ export default function Header() {
   return (
     <header>
       <div className={styles['header-contents']}>
-        <JumpInText>
-          <span className={styles['logotext']}>Trevor W.</span>
+        <JumpInText text="Trevor W.">
         </JumpInText>
-        <nav>
-          {menuItems.map(({ href, label }, i) => (
-            <HeaderNavLink
-              key={href}
-              href={href}
-              animationDelay={0.2 * (i + 1)}
-            >
-              {label}
-            </HeaderNavLink>
-          ))}
-        </nav>
+        <div className={'flex gap-6'}>
+          <VerticalBarsFlair variant="faded" animation="fadeInFromRight" animationDelay={800}/>
+          <nav>
+            {menuItems.map(({ href, label }, i) => (
+              <HeaderNavLink
+                key={href}
+                href={href}
+                animationDelay={0.2 * (i + 1)}
+              >
+                {label}
+              </HeaderNavLink>
+            ))}
+          </nav>
+        </div>
         <MobileMenu />
       </div>
       <PatternDivider direction="right-to-left" />

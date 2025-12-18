@@ -70,7 +70,7 @@ interface ScrambledTextProps {
 }
 
 
-export function ScrambledText({
+export default function ScrambledText({
   text,
   delay = 20,
   scrambleRounds = 2,

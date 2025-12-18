@@ -1,11 +1,15 @@
 // /components/HeaderNavLink/HeaderNavLink.tsx
-
 'use client';
-
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import styles from './HeaderNavLink.module.css';
+
+// Import your icons
+import SelectorIcon from '@/components/icons/SelectorIcon';
+import HomeIcon from '@/components/icons/HomeIcon';
+import AboutIcon from '@/components/icons/AboutIcon';
+// ... import other icons as needed
 
 interface HeaderLinkProps {
   href: string;
@@ -14,6 +18,14 @@ interface HeaderLinkProps {
   onClick?: () => void;
   hideActiveBox?: boolean;
 }
+
+// Icon mapping based on children text
+const iconMap: Record<string, React.ComponentType<any>> = {
+  'Home': HomeIcon,
+  'About': AboutIcon,
+  'Services': SelectorIcon,
+  'Contact': SelectorIcon
+};
 
 export default function HeaderNavLink({
   href,
@@ -25,6 +37,7 @@ export default function HeaderNavLink({
   const pathname = usePathname();
   const hasAnimatedRef = useRef(false);
   const [animate, setAnimate] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     if (!hasAnimatedRef.current) {
@@ -36,13 +49,18 @@ export default function HeaderNavLink({
   const normalizePath = (path: string) => path.replace(/\/+$/, '') || '/';
   const isActive = normalizePath(pathname) === normalizePath(href);
 
-  // Wrapper container classes: fade-in animation once on mount
+  // Get the icon component based on children text
+  const childText = typeof children === 'string' ? children : '';
+  const IconComponent = iconMap[childText] || SelectorIcon; // fallback to SelectorIcon
+
+  // Determine variant: dark if active or hovered, light otherwise
+  const iconVariant = (isActive || isHovered) ? 'dark' : 'light';
+
   const wrapperClassNames = [
     styles['menu-link-wrapper'],
     animate ? styles.animate : '',
   ].filter(Boolean).join(' ');
 
-  // Link classes: just active or normal (no animation here)
   const linkClassNames = [
     styles['menu-link'],
     isActive ? styles.active : '',
@@ -53,8 +71,20 @@ export default function HeaderNavLink({
       className={wrapperClassNames}
       style={{ '--delay': `${animationDelay}s` } as React.CSSProperties}
     >
-      <Link href={href} className={linkClassNames} onClick={onClick}>
+      <Link 
+        href={href} 
+        className={linkClassNames} 
+        onClick={onClick}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         {!isActive && <span className={styles['menu-link-bg']} />}
+        
+        {/* Icon box */}
+        <span className={styles['icon-box']}>
+          <IconComponent size={18} variant={iconVariant} />
+        </span>
+        
         {children}
         <div className={styles['border-top']} />
         <div className={styles['border-bottom']} />

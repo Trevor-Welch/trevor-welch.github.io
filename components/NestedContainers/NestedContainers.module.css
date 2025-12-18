@@ -1,0 +1,261 @@
+/* components/NestedContainers/NestedContainers.module.css */
+.nestedContainers {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 600px;
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+  .nestedContainers {
+    flex-direction: row;
+  }
+}
+
+/* Left Column */
+.leftColumn {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  padding-right: 0;
+  transition: width 0.1s ease;
+}
+
+@media (min-width: 1024px) {
+  .leftColumn {
+    width: 33.333333%; /* Default */
+  }
+  
+  /* No selection: 50% */
+  .layoutNoSelection .leftColumn {
+    width: 50%;
+  }
+  
+  /* Category only: 33.333% */
+  .layoutCategoryOnly .leftColumn {
+    width: 35%;
+  }
+  
+  /* Full selection: 25% */
+  .layoutFullSelection .leftColumn {
+    width: 27.5%;
+  }
+}
+
+.menuContainer {
+  padding-left: 1rem;
+  flex: 1;
+  color: var(--color-text);
+  
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Center Column */
+.centerColumn {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  transition: width 0.1s ease;
+}
+
+@media (min-width: 1024px) {
+  .centerColumn {
+    width: 33.333333%; /* Default */
+  }
+  
+  /* No selection: 25% */
+  .layoutNoSelection .centerColumn {
+    width: 25%;
+  }
+  
+  /* Category only: 33.333% */
+  .layoutCategoryOnly .centerColumn {
+    width: 35%;
+  }
+  
+  /* Full selection: 25% */
+  .layoutFullSelection .centerColumn {
+    width: 27.5%;
+  }
+}
+
+/* Right Column */
+.rightColumn {
+  width: 100%;
+  padding-left: 0;
+  transition: width 0.1s ease;
+}
+
+@media (min-width: 1024px) {
+  .rightColumn {
+    width: 33.333333%; /* Default */
+  }
+  
+  /* No selection: 25% */
+  .layoutNoSelection .rightColumn {
+    width: 25%;
+  }
+  
+  /* Category only: 33.333% */
+  .layoutCategoryOnly .rightColumn {
+    width: 20%;
+  }
+  
+  /* Full selection: 50% */
+  .layoutFullSelection .rightColumn {
+    width: 45%;
+  }
+}
+
+/* InfoBox */
+.infoBox {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-white);
+  color: var(--color-text);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.titleBar {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  padding: 0.3rem 0.7rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 2px solid var(--color-text);
+}
+
+.squareIndicator {
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--color-bg);
+  flex-shrink: 0;
+}
+
+.contentWrapper {
+  padding: 0.5rem 1rem 0.5rem 0rem;
+}
+
+.scrollWrapper {
+  margin: 4px 0px;
+  margin-left: -34px;
+  padding: 0rem 1rem 0rem 34px;
+  overflow-y: scroll;
+}
+
+.upperLine {
+  height: 2px;
+  width: 90%;
+  margin: 0px auto;
+  background: var(--color-light-gray);
+}
+
+.upperDot {
+  height: 4px;
+  width: 4px;
+  margin-left: auto;
+  background: var(--color-light-gray);
+  margin-top: -0px;
+}
+
+.lowerLine {
+  height: 2px;
+  width: 90%;
+  margin: 0px auto;
+  background: var(--color-light-gray);
+}
+
+.lowerDot {
+  height: 4px;
+  width: 4px;
+  margin-left: auto;
+  background: var(--color-light-gray);
+  margin-bottom: -0px;
+}
+
+.scrollContent {
+  max-height: 400px;
+  margin: 0rem 0rem;
+}
+
+.scrollWrapper::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 5000px;
+}
+
+.scrollWrapper::-webkit-scrollbar-track {
+  background: var(--color-light-gray);
+}
+
+.scrollWrapper::-webkit-scrollbar-thumb {
+  background: var(--color-text);
+  border-radius: 4px;
+}
+
+.scrollWrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--color-not-black);
+}
+
+/* Menu items container */
+.menuItemsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  
+}
+
+/* Content padding */
+.contentPadding {
+  padding: 1.5rem;
+}
+
+/* Animations */
+.fadeHide {
+  opacity: 0;
+}
+
+.fadeShow {
+  opacity: 1;
+  animation: fadeInSlide 0.2s ease-in-out;
+}
+
+.fadeIn {
+  opacity: 0;
+  animation: fadeInSlide 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
