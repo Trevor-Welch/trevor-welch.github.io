@@ -26,8 +26,6 @@ interface NestedContainersProps {
 
 export default function NestedContainers({
   categories,
-  defaultCategoryId,
-  defaultItemId,
   className = ''
 }: NestedContainersProps) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);

@@ -1,5 +1,6 @@
 // app/projects/page.tsx (or wherever you want to use it)
 'use client';
+import Image from 'next/image';
 import NestedContainers, { NestedCategory } from '@/components/NestedContainers/NestedContainers';
 import JumpInText from '@/components/JumpInText/JumpInText';
 
@@ -72,11 +73,14 @@ export default function ProjectsPage() {
           content: (
             <div className="space-y-4">
               <p className="text-lg font-semibold">Virtuous Contract</p>
-              <img 
-                src="https://via.placeholder.com/300x150" 
-                alt="Virtuous Contract" 
-                className="w-full"
-              />
+              <div className="relative w-full h-[150px]">
+                <Image 
+                  src="https://via.placeholder.com/300x150" 
+                  alt="Virtuous Contract" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <p>A white blade forged by samurai of the East.</p>
               <div className="space-y-2">
                 <p><strong>Attack:</strong> 300-330</p>
@@ -109,11 +113,14 @@ export default function ProjectsPage() {
           content: (
             <div className="space-y-4">
               <p className="text-lg font-semibold">Virtuous Treaty</p>
-              <img 
-                src="https://via.placeholder.com/300x150" 
-                alt="Virtuous Treaty" 
-                className="w-full"
-              />
+              <div className="relative w-full h-[150px]">
+                <Image 
+                  src="https://via.placeholder.com/300x150" 
+                  alt="Virtuous Treaty" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <p>A white katana kept by samurai of the East.</p>
               <div className="space-y-2">
                 <p><strong>Attack:</strong> 300-330</p>

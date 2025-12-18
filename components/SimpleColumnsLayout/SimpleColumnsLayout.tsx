@@ -12,8 +12,8 @@ interface SimpleColumnsLayoutProps {
 export default function SimpleColumnsLayout({ 
   leftSlot, 
   rightSlot, 
-  className = '',
-  reverseLayout = false 
+  className = ''
+  // reverseLayout = false 
 }: SimpleColumnsLayoutProps) {
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(false);

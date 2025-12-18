@@ -9,7 +9,7 @@ import styles from './HeaderNavLink.module.css';
 import SelectorIcon from '@/components/icons/SelectorIcon';
 import HomeIcon from '@/components/icons/HomeIcon';
 import AboutIcon from '@/components/icons/AboutIcon';
-// ... import other icons as needed
+
 
 interface HeaderLinkProps {
   href: string;
@@ -19,8 +19,14 @@ interface HeaderLinkProps {
   hideActiveBox?: boolean;
 }
 
+// Define the icon props type based on your icon components
+interface IconProps {
+  size?: number;
+  variant?: 'light' | 'dark';
+}
+
 // Icon mapping based on children text
-const iconMap: Record<string, React.ComponentType<any>> = {
+const iconMap: Record<string, React.ComponentType<IconProps>> = {
   'Home': HomeIcon,
   'About': AboutIcon,
   'Services': SelectorIcon,
@@ -54,7 +60,7 @@ export default function HeaderNavLink({
   const IconComponent = iconMap[childText] || SelectorIcon; // fallback to SelectorIcon
 
   // Determine variant: dark if active or hovered, light otherwise
-  const iconVariant = (isActive || isHovered) ? 'dark' : 'light';
+  const iconVariant: 'light' | 'dark' = (isActive || isHovered) ? 'dark' : 'light';
 
   const wrapperClassNames = [
     styles['menu-link-wrapper'],

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './StylizedButton.module.css';
-import { ScrambledText } from '../ScrambledText/ScrambledText';
+import ScrambledText from '../ScrambledText/ScrambledText';
 import { useStaticGlitchEffect } from '@/hooks/useStaticGlitchEffect';
 
 interface StylizedButtonProps {
@@ -31,7 +31,9 @@ export default function StylizedButton({
   effect,
 }: StylizedButtonProps) {
   const [hasMounted, setHasMounted] = useState(false);
-  const effectRef = effect === 'glitch' ? useStaticGlitchEffect() : null; 
+  
+  const glitchRef = useStaticGlitchEffect();
+  const effectRef = effect === 'glitch' ? glitchRef : null;
 
   useEffect(() => {
     setHasMounted(true);

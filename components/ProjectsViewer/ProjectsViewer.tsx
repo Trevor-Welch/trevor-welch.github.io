@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 // Mock icons - replace with your actual icons
 const SelectorIcon = ({ size = 24, variant = 'dark' }) => (
@@ -120,6 +121,12 @@ const styles = {
   fadeIn: {
     animation: 'fadeIn 0.3s ease-in-out',
   },
+  imageContainer: {
+    position: 'relative' as const,
+    width: '100%',
+    height: '150px',
+    marginBottom: '1rem',
+  },
 };
 
 const MenuItem = ({ 
@@ -182,7 +189,7 @@ export default function ProjectsViewer({ categories }: ProjectsViewerProps) {
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-
+  
   const categoryHoverTimeout = useRef<NodeJS.Timeout | null>(null);
   const itemHoverTimeout = useRef<NodeJS.Timeout | null>(null);
 
@@ -235,7 +242,7 @@ export default function ProjectsViewer({ categories }: ProjectsViewerProps) {
             const isActive = category.id === activeCategory;
             const isHovered = hoveredCategory === category.id;
             const shouldShowSelector = hoveredCategory ? isHovered : isActive;
-
+            
             return (
               <MenuItem
                 key={category.id}
@@ -264,7 +271,7 @@ export default function ProjectsViewer({ categories }: ProjectsViewerProps) {
               const isActive = item.id === activeItem;
               const isHovered = hoveredItem === item.id;
               const shouldShowSelector = hoveredItem ? isHovered : isActive;
-
+              
               return (
                 <MenuItem
                   key={item.id}
@@ -334,7 +341,14 @@ const demoCategories: ProjectCategory[] = [
         description: 'A white katana kept by samurai of the East',
         details: <div>
           <h3>Virtuous Treaty</h3>
-          <img src="https://via.placeholder.com/300x150" alt="Virtuous Treaty" style={{ width: '100%', marginBottom: '1rem' }} />
+          <div style={styles.imageContainer}>
+            <Image 
+              src="https://via.placeholder.com/300x150" 
+              alt="Virtuous Treaty"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
           <p>A white katana kept by samurai of the East.</p>
           <p><strong>Attack:</strong> 300-330</p>
           <p><strong>Combo:</strong> Lt 2 Hv 2</p>
@@ -384,4 +398,4 @@ const demoCategories: ProjectCategory[] = [
 ];
 
 // Render demo
-const App = () => <ProjectsViewer categories={demoCategories} />;
+// const App = () => <ProjectsViewer categories={demoCategories} />;
