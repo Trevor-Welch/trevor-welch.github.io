@@ -319,6 +319,7 @@ export default function ProjectsViewer({ categories }: ProjectsViewerProps) {
 }
 
 // Demo usage
+/*
 const demoCategories: ProjectCategory[] = [
   {
     id: 'weapons',
@@ -396,6 +397,6 @@ const demoCategories: ProjectCategory[] = [
     ],
   },
 ];
-
+*/
 // Render demo
 // const App = () => <ProjectsViewer categories={demoCategories} />;
