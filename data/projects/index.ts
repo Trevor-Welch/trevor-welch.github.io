@@ -8,6 +8,12 @@ import { turnipProphet } from './turnip-prophet';
 import { badgeReader } from './badge-reader';
 import { pythonAutomationScripts } from './python-automation-scripts';
 import { notiiceWebsite } from './notiice-website';
+import { hunnyBunny } from './hunny-bunny';
+import { dealersDatabase } from './dealers-database';
+import { rockbridgeCreativeInstitute } from './rockbridge-creative-institute';
+import { apaRaleigh } from './apa-raleigh';
+import { fursonacon } from './fursonacon';
+import { viciousCycles } from './vicious-cycles';
 import type { ProjectCategory } from './types';
 
 // Helper to convert project to nested item format
@@ -23,8 +29,8 @@ export const getProjects = (): ProjectCategory[] => {
       id: 'recent',
       label: 'Recent Work',
       items: [
+        toItem(hunnyBunny),
         toItem(nextVideoRoulette),
-        toItem(ticketingSystem),
         toItem(thisWebsite),
       ]
     },
@@ -43,21 +49,27 @@ export const getProjects = (): ProjectCategory[] => {
       id: 'vue',
       label: 'Vue',
       items: [
-        toItem(pvpCookieClicker),
+        toItem(dealersDatabase),
       ]
     },
     {
       id: 'wordpress',
       label: 'WordPress',
       items: [
-         toItem(interactiveMap),
+        toItem(hunnyBunny),
+        toItem(fursonacon),
+        toItem(apaRaleigh),
+        toItem(rockbridgeCreativeInstitute),
       ]
     },
     {
       id: 'design',
       label: 'Design',
       items: [
+        toItem(hunnyBunny),
+        toItem(fursonacon),
         toItem(notiiceWebsite),
+        toItem(viciousCycles),
       ]
     },
     {
