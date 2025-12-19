@@ -15,7 +15,7 @@ interface MenuLinkProps {
   scrambleText?: boolean;
   showSelector?: boolean;
   invertSelectorDiamond?: boolean;
-  variant?: string;
+  variant?: 'default' | 'submenu';
   transparentBackground?: boolean;
   disableFade?: boolean;
   smaller?: boolean;
@@ -31,7 +31,9 @@ export default function MenuLink({
   scrambleText = false,
   showSelector = false,
   invertSelectorDiamond = false,
-  variant = ''
+  variant = 'default',
+  transparentBackground = false,
+  disableFade = false,
 }: MenuLinkProps) {
   const [hasMounted, setHasMounted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -40,16 +42,7 @@ export default function MenuLink({
     setHasMounted(true);
   }, []);
 
-  const wrapperClassNames = [styles['menu-link-wrapper']];
-  
-  if (hasMounted && variant!=='submenu'){
-    wrapperClassNames.push(styles.animate);
-  } else {
-    wrapperClassNames.push(styles.dontAnimate);
-  }
-
-  const linkClassNames = [styles['menu-link']];
-  if (active) linkClassNames.push(styles.active);
+  const shouldAnimate = hasMounted && variant !== 'submenu' && !disableFade;
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -63,43 +56,35 @@ export default function MenuLink({
 
   return (
     <div
-      className={wrapperClassNames.join(' ')}
+      className={`${styles['menu-link-wrapper']} ${shouldAnimate ? styles.animate : styles.dontAnimate}`}
       style={{ 
         '--delay': `${animationDelay}s`,
-        position: 'relative'
       } as React.CSSProperties}
+      data-variant={variant}
     >
-      {/* Selector SVG - positioned at wrapper level */}
+      {/* Selector SVG */}
       {showSelector && (
-        <div
-          className={styles.selector}
-          style={{
-            position: 'absolute',
-            left: '-36px',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            display: 'flex',
-            alignItems: 'center',
-          }}
-        >
-          <SelectorIcon size={28} isHovered={isHovered} isActive={active} invertSelectorDiamond={invertSelectorDiamond} />
+        <div className={styles.selector}>
+          <SelectorIcon 
+            size={28} 
+            isHovered={isHovered} 
+            isActive={active} 
+            invertSelectorDiamond={invertSelectorDiamond} 
+          />
         </div>
       )}
 
       <div
-        className={linkClassNames.join(' ')}
+        className={`${styles['menu-link']} ${active ? styles.active : ''}`}
         onClick={onClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        style={{ alignItems: 'center' }}
+        data-variant={variant}
+        data-transparent={transparentBackground}
       >
-        <span 
-          className={styles['menu-link-bg']} 
-          style={{ 
-            backgroundColor: variant == 'submenu' ? 'transparent' : undefined 
-          }}
-        />
+        <span className={styles['menu-link-bg']} />
         <span className={styles.squareIndicator} />
+        
         {scrambleText ? (
           <ScrambledText
             text={label}
@@ -110,8 +95,10 @@ export default function MenuLink({
         ) : (
           label
         )}
+
         <div className={styles['border-top']} />
         <div className={styles['border-bottom']} />
+        
         {active && <span className={styles.activeBox} />}
       </div>
     </div>

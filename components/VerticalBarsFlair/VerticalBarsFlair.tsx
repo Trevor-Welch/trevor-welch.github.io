@@ -20,7 +20,7 @@ export default function VerticalBarsFlair({
         ${variant && styles[variant]}
         ${animation && animations[animation]}
       `}
-      style={{ 'animation-delay': typeof animationDelay === 'number' ? `${animationDelay}ms` : animationDelay } as React.CSSProperties}
+      style={{ 'animationDelay': typeof animationDelay === 'number' ? `${animationDelay}ms` : animationDelay } as React.CSSProperties}
     >
       <div className={styles.barLarge} />
       <div className={styles.barSmall} />

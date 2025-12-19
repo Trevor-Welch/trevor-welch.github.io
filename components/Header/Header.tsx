@@ -20,8 +20,8 @@ export default function Header() {
   return (
     <header>
       <div className={styles['header-contents']}>
-        <JumpInText text="Trevor W.">
-        </JumpInText>
+        <a href="/"><JumpInText text="Trevor W.">
+        </JumpInText></a>
         <div className={'flex gap-6'}>
           <VerticalBarsFlair variant="faded" animation="fadeInFromRight" animationDelay={800}/>
           <nav>

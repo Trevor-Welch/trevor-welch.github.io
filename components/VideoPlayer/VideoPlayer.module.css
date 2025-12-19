@@ -1,0 +1,19 @@
+/* components/VideoPlayer/VideoPlayer.module.css */
+.videoContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.video {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+}
+
+.video:focus {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}

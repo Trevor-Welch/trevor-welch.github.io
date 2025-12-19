@@ -16,10 +16,11 @@ const items: PanelContainerItem[] = [
         <CardGroup gap={16}  className="position-relative">
           <OpenForWork />
           <h2>Full-Stack Developer</h2>
-          <p><i className="opacity-50">Welcome to my corner of the internet!</i></p>
-          <p>My name is <b>Trevor Welch</b> and I am an <b>end-to-end software engineer</b> based out of Raleigh, NC, helping local and remote clients alike.</p>
-          <p>I help turn ideas into reality - from simple websites to complex web applications.</p>
-          <div className="flex gap-4 mb-8 mt-4">
+          <p><i className="opacity-50">Looking for someone who knows code?</i></p>
+          <p>My name is <b>Trevor Welch</b> and I am an <b>end-to-end software engineer</b> based out of Raleigh, NC.</p>
+          <p>I help clients and teams by providing <b>over 10 years of experience</b> in building and maintaining websites, web applications, and more -- specializing in data heavy applications and coming up with creative UIs that make the internet a more interesting place to browse.</p>
+          <p><b>My favorite projects are the ones that make life easier for others.</b></p>
+          <div className="flex gap-4 mb-6 mt-4">
             <StylizedButton
               label='Past Projects'
               href="/projects"
@@ -27,7 +28,7 @@ const items: PanelContainerItem[] = [
               inline
             />
             <StylizedButton
-              label='Let&apos;s Chat'
+              label='Contact'
               href="/contact"
               variant="dark"
               inline

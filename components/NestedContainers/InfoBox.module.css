@@ -1,0 +1,118 @@
+/* components/InfoBox/InfoBox.module.css */
+.infoBox {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-white);
+  color: var(--color-text);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transition: height 0.3s ease, opacity 0.5s ease-in-out;
+  max-height: 720px;
+  overflow:hidden;
+
+  h3 {
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    p:last-of-type {
+        margin-bottom: 1.5rem;
+    }
+}
+
+.titleBar {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  padding: 0.3rem 0.7rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 2px solid var(--color-text);
+}
+
+.squareIndicator {
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--color-bg);
+  flex-shrink: 0;
+}
+
+.contentWrapper {
+  padding: 0.65rem 0.75rem 0.65rem 0rem;
+  overflow: hidden;
+}
+
+.scrollWrapper {
+  margin: 4px 0px;
+  margin-left: -34px;
+  padding: 0rem 1rem 0rem 34px;
+  overflow-y: scroll;
+}
+
+.upperLine,
+.lowerLine {
+  height: 2px;
+  width: 90%;
+  margin: 0px auto;
+  background: var(--color-light-gray);
+}
+
+.upperDot,
+.lowerDot {
+  height: 4px;
+  width: 4px;
+  margin-left: auto;
+  background: var(--color-light-gray);
+}
+
+.scrollContent {
+  max-height: 480px;
+  margin: 0rem 0rem;
+  
+}
+
+.scrollWrapper::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 5000px;
+}
+
+.scrollWrapper::-webkit-scrollbar-track {
+  background: var(--color-light-gray);
+}
+
+.scrollWrapper::-webkit-scrollbar-thumb {
+  background: var(--color-text);
+  border-radius: 4px;
+}
+
+.scrollWrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--color-not-black);
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+  animation: fadeInSlide 0.2s ease-in-out;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+
+

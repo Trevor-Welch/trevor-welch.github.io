@@ -6,7 +6,7 @@ import SimpleColumnsLayout from '@/components/SimpleColumnsLayout/SimpleColumnsL
 import InfoBox from '@/components/InfoBox/InfoBox';
 import SocialBar from '@/components/SocialBar/SocialBar';
 
-export default function Home() {
+export default function ContactPage() {
   return (
     <main className="page-container">
       <JumpInText

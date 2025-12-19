@@ -4,6 +4,7 @@
   opacity: 0;
   width: 100%;
   line-height: 1.6rem;
+  position: relative;
 }
 
 .animate {
@@ -15,9 +16,21 @@
   transform: scale(1) translateX(0);
 }
 
+/* Selector positioning */
+.selector {
+  position: absolute;
+  left: -36px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+/* Base link styles */
 .menu-link {
   position: relative;
   display: flex;
+  align-items: center;
   padding: 0.7rem 0.7rem;
   color: var(--color-not-black);
   cursor: pointer;
@@ -25,6 +38,10 @@
   font-size: 1.4rem;
   z-index: 1;
   overflow-y: hidden;
+}
+
+.menu-link[data-variant="submenu"] {
+  font-size: 1.25rem;
 }
 
 @media (max-width: 768px) {
@@ -37,7 +54,7 @@
   color: var(--color-not-white);
 }
 
-/* Fill-behind effect matching HeaderNavLink */
+/* Fill-behind effect */
 .menu-link::before {
   content: "";
   position: absolute;
@@ -55,12 +72,12 @@
   transition: width 0.2s ease-out;
 }
 
-/* Active state fills immediately without animation */
 .menu-link.active::before {
   width: 100%;
   transition: none;
 }
 
+/* Background layer */
 .menu-link-bg {
   position: absolute;
   inset: 0;
@@ -68,8 +85,20 @@
   z-index: -2;
 }
 
+/* Variant: submenu - transparent background */
+.menu-link[data-variant="submenu"] .menu-link-bg {
+  background-color: transparent;
+}
+
+/* Variant: transparent background override */
+.menu-link[data-transparent="true"] .menu-link-bg {
+  background-color: transparent;
+}
+
+/* Square indicator */
 .squareIndicator {
   display: inline-block;
+  min-width: 1rem;
   width: 1rem;
   height: 1rem;
   margin-bottom: 1px;
@@ -81,12 +110,18 @@
   z-index: 1;
 }
 
-/* Change background color on hover or active */
+.menu-link[data-variant="submenu"] .squareIndicator {
+  min-width: 0.8rem;
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
 .menu-link:hover .squareIndicator,
 .menu-link.active .squareIndicator {
   background-color: var(--color-white);
 }
 
+/* Border animations */
 .border-top,
 .border-bottom {
   position: absolute;
@@ -118,6 +153,13 @@
   opacity: 1;
 }
 
+/* Variant: submenu - hide borders */
+.menu-link[data-variant="submenu"] .border-top,
+.menu-link[data-variant="submenu"] .border-bottom {
+  display: none;
+}
+
+/* Active state */
 .active {
   color: var(--color-white);
   animation: glowPulse 2.5s ease-in-out infinite;
@@ -135,6 +177,7 @@
   z-index: -1;
 }
 
+/* Animations */
 @keyframes fadeInScale {
   0% {
     opacity: 0;
