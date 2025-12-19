@@ -38,10 +38,10 @@ export const getProjects = (): ProjectCategory[] => {
       id: 'react',
       label: 'React',
       items: [
-        toItem(interactiveMap),
-        toItem(pvpCookieClicker),
         toItem(nextVideoRoulette),
         toItem(ticketingSystem),
+        toItem(interactiveMap),
+        toItem(pvpCookieClicker),
         toItem(thisWebsite),
       ]
     },
