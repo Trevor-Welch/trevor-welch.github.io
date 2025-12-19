@@ -89,11 +89,7 @@ const items: PanelContainerItem[] = [
           <CardData label="Analytics" content="Google Analytics, Google Search Console, Google Tag Manager, Hotjar, Meta Pixel" />
         </CardGroup>  
         <CardGroup gap={16}>
-          <StylizedButton
-            label='"Can I see something more like a resume?"'
-            href="/resume"
-            variant="dark"
-          />
+        
           <StylizedButton
             label='"We should collaborate. Let&apos;s chat!'
             href="/contact"

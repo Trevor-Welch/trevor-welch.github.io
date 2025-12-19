@@ -3,7 +3,6 @@ import PanelContainer, { PanelContainerItem } from '@/components/PanelContainer/
 import JumpInText from '@/components/JumpInText/JumpInText';
 import InfoBox from '@/components/InfoBox/InfoBox';
 import CardGroup from '@/components/CardGroup/CardGroup';
-import StylizedButton from '@/components/StylizedButton/StylizedButton';
 
 export default function Home() {
 

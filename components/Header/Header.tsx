@@ -1,7 +1,6 @@
 // /components/Header/Header.tsx
-
 'use client';
-
+import Link from 'next/link';
 import PatternDivider from '@/components/PatternDivider/PatternDivider';
 import HeaderNavLink from '@/components/HeaderNavLink/HeaderNavLink';
 import MobileMenu from '@/components/MobileMenu/MobileMenu';
@@ -20,8 +19,9 @@ export default function Header() {
   return (
     <header>
       <div className={styles['header-contents']}>
-        <a href="/"><JumpInText text="Trevor W.">
-        </JumpInText></a>
+        <Link href="/">
+          <JumpInText text="Trevor W." />
+        </Link>
         <div className={'flex gap-6'}>
           <VerticalBarsFlair variant="faded" animation="fadeInFromRight" animationDelay={800}/>
           <nav>

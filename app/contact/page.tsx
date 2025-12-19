@@ -5,6 +5,7 @@ import ContactForm from '@/components/ContactForm/ContactForm';
 import SimpleColumnsLayout from '@/components/SimpleColumnsLayout/SimpleColumnsLayout';
 import InfoBox from '@/components/InfoBox/InfoBox';
 import SocialBar from '@/components/SocialBar/SocialBar';
+import Link from 'next/link';
 
 export default function ContactPage() {
   return (
@@ -17,8 +18,10 @@ export default function ContactPage() {
       </JumpInText>
       <SimpleColumnsLayout reverseLayout
         leftSlot={
-          <SocialBar title="Other Ways To Contact">
-            <div>Test</div>
+          <SocialBar title="Ways To Contact">
+            <Link href="mailto:welch.trevor@yahoo.com">welch.trevor@yahoo.com</Link>
+            <Link href="https://www.linkedin.com/in/trevorjwelch/">LinkedIn</Link>
+            <Link href="https://x.com/trevorjwelch">X (Twitter)</Link>
           </SocialBar>
         }
         rightSlot={
