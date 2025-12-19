@@ -1,94 +1,146 @@
 'use client';
 
 import { useState, ChangeEvent, FormEvent, useRef } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
 
 type FormData = {
   name: string;
   email: string;
   message: string;
+  company: string; // honeypot
 };
 
 type ContactFormProps = {
   actionUrl?: string;
 };
 
-export default function ContactForm({ actionUrl = "https://trevorjwelch.com/api/contact" }: ContactFormProps) {
+const MIN_SUBMIT_TIME_MS = 3000;
+
+export default function ContactForm({
+  actionUrl = 'https://trevorjwelch.com/api/contact',
+}: ContactFormProps) {
+  console.log('[ContactForm] Component render');
+
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     message: '',
+    company: '', // honeypot
   });
 
   const [status, setStatus] = useState<string | null>(null);
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const formLoadedAt = useRef<number>(Date.now());
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  /* -------------------------
+     Handlers
+  --------------------------*/
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
+    console.log('[Form] Field change:', name, value);
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const onCaptchaChange = (token: string | null) => {
-    setCaptchaToken(token);
-  };
-
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setStatus(null);
+    console.group('[Form Submit]');
+    console.log('Form data:', formData);
 
-    if (!captchaToken) {
-      setStatus('Please complete the CAPTCHA');
+    // 1️⃣ Honeypot check
+    if (formData.company) {
+      console.warn('[Spam] Honeypot triggered');
+      setStatus('Submission rejected.');
+      console.groupEnd();
+      return;
+    }
+
+    // 2️⃣ Timing check
+    const elapsed = Date.now() - formLoadedAt.current;
+    console.log('[Spam] Time to submit (ms):', elapsed);
+
+    if (elapsed < MIN_SUBMIT_TIME_MS) {
+      console.warn('[Spam] Submitted too quickly');
+      setStatus('Submission rejected.');
+      console.groupEnd();
       return;
     }
 
     setStatus('Sending...');
 
     try {
-      const payload = {
-        ...formData,
-        captchaToken, // include captcha token for backend verification
-      };
-
       const response = await fetch(actionUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer a98f3249823fh9df32f9hf932h9f23h9',
+          Authorization: 'Bearer a98f3249823fh9df32f9hf932h9f23h9',
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          company: formData.company,           // honeypot
+          formStartedAt: formLoadedAt.current, // timing
+        }),
       });
+
+      console.log('[Submit] Response status:', response.status);
 
       if (!response.ok) {
         const errorText = await response.text();
-        setStatus(`Error: ${errorText}`);
-        recaptchaRef.current?.reset(); // reset captcha on error to allow retry
-        setCaptchaToken(null);
-        return;
+        throw new Error(errorText);
       }
 
+      console.log('[Submit] Success');
       setStatus('Message sent!');
-      setFormData({ name: '', email: '', message: '' });
-      recaptchaRef.current?.reset(); // reset captcha after success
-      setCaptchaToken(null);
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        console.error(err.message);
-        setStatus(`Error: ${err.message}`);
-      } else {
-        console.error('Unexpected error:', err);
-        setStatus('Unexpected error occurred');
-      }
-      recaptchaRef.current?.reset(); // reset captcha on error
-      setCaptchaToken(null);
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+        company: '',
+      });
+      formLoadedAt.current = Date.now();
+    } catch (err) {
+      console.error('[Submit] Error:', err);
+      setStatus(
+        err instanceof Error ? `Error: ${err.message}` : 'Unexpected error'
+      );
+    } finally {
+      console.groupEnd();
     }
   };
 
+  /* -------------------------
+     Render
+  --------------------------*/
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} noValidate>
+      {/* Honeypot field (hidden from users) */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          left: '-9999px',
+          height: 0,
+          overflow: 'hidden',
+        }}
+      >
+        <label>
+          Company:
+          <input
+            type="text"
+            name="company"
+            tabIndex={-1}
+            autoComplete="off"
+            value={formData.company}
+            onChange={handleChange}
+          />
+        </label>
+      </div>
+
       <label>
         Name:
         <input
@@ -96,7 +148,7 @@ export default function ContactForm({ actionUrl = "https://trevorjwelch.com/api/
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full mb-3 p-2 border rounded"
+          className="w-full mb-3 p-2 border"
         />
       </label>
 
@@ -108,7 +160,7 @@ export default function ContactForm({ actionUrl = "https://trevorjwelch.com/api/
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full mb-3 p-2 border rounded"
+          className="w-full mb-3 p-2 border"
         />
       </label>
 
@@ -119,26 +171,23 @@ export default function ContactForm({ actionUrl = "https://trevorjwelch.com/api/
           value={formData.message}
           onChange={handleChange}
           required
-          className="w-full mb-3 p-2 border rounded"
+          className="w-full mb-3 p-2 border"
         />
       </label>
 
-      <ReCAPTCHA
-        sitekey="6LdHi5krAAAAAMj_vZYjDXwbB31ccofE2Vj0sha5"
-        onChange={onCaptchaChange}
-        size="invisible"
-        ref={recaptchaRef}
-      />
-
       <button
         type="submit"
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition mt-3"
+        className="bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition mt-3"
       >
-        Send
+        Send Form
       </button>
 
       {status && (
-        <p className={`mt-4 ${status.startsWith('Error') ? 'text-red-600' : 'text-green-600'}`}>
+        <p
+          className={`mt-4 ${
+            status.startsWith('Error') ? 'text-red-600' : 'text-green-600'
+          }`}
+        >
           {status}
         </p>
       )}
