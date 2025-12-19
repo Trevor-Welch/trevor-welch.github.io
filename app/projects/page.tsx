@@ -8,7 +8,7 @@ export default function ProjectsPage() {
   return (
     <main className="page-container">
       <JumpInText
-        text="My Projects"
+        text="Past Projects"
         as="h1"
         className="mb-10"
       />
