@@ -67,28 +67,6 @@ const items: PanelContainerItem[] = [
       </InfoBox>
   },
   {
-    id: 'favorites',
-    label: 'Favorite Projects',
-    content: <InfoBox title="introductoryMessage.exe" note="SGVsbG8gV29ybGQ=">
-        <CardGroup gap={16}>
-          <p>Welcome to my corner of the web.</p>
-          <p>I&apos;m Trevor Welch, an end-to-end software developer based in Raleigh, NC.</p>
-          <p>My passion is to help make life easier for others through the use of technology - regardless if I&apos;m making a website for someone&apos;s business, creating a script for a Raspberry Pi, or contributing to open source tools.</p>
-          <p>I&apos;ve helped over 40 clients in my 10+ years of experience, including: An artist&apos;s online shop, an aquatic pet store&apos;s e-commerce storefront, a non-profit helping implement recycling infrastructure in my city, a large-scale convention with thousands of people, and more.</p>
-          <p>I truly believe there are people in the world doing great things. They just need some help being seen.</p>
-          <p>That&apos;s where I help.</p>
-          <p>If you need someone who is passionate about what they do, is versed in multiple programming languages and libraries to help bring your idea to life, and has experience handling projects solo or in a team-environment, consider reaching out.</p>
-          <StylizedButton
-            effect="glitch"
-            label='"Let&apos;s Chat"'
-            href="/contact"
-            variant="dark"
-            inline
-          />
-        </CardGroup>
-      </InfoBox>
-  },
-  {
     id: 'collaborating',
     label: 'Working With Me',
     content: 
