@@ -4,6 +4,7 @@ import Link from 'next/link';
 import PatternDivider from '@/components/PatternDivider/PatternDivider';
 import HeaderNavLink from '@/components/HeaderNavLink/HeaderNavLink';
 import MobileMenu from '@/components/MobileMenu/MobileMenu';
+//import MobileMenu from './MobileMenu';
 import JumpInText from '@/components/JumpInText/JumpInText';
 import styles from './Header.module.css';
 import VerticalBarsFlair from '../VerticalBarsFlair/VerticalBarsFlair';

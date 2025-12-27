@@ -5,8 +5,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
-
-  @media (width >=  768px) {
+  @media (width >= 768px) {
     display: none;
   }
 }
@@ -15,10 +14,9 @@
   position: relative;
 }
 
-
 /* Button styling */
 .hamburger {
-  background: var(--color-bg);
+  background: var(--color-text);
   border: none;
   padding: 0;
   margin: 0;
@@ -35,44 +33,76 @@
   z-index: 1200;
 }
 
-.hamburger.open {
-    box-shadow: 0 0 5px rgba(0,0,0,0.0);
-}
-
-
-
 .lineWrapper {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 46px;
-    padding:12px 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 46px;
+  padding: 12px 8px;
 }
 
 .line {
   display: block;
   min-width: 32px;
   height: 3px;
-  background-color: var(--color-text);
+  background-color: var(--color-bg);
   border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+
+/* Shared border base */
+.borderTop,
+.borderBottom {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-text);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 800;
+  transform-origin: left;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Open state transformations */
-.hamburger.open .line:nth-child(1) {
-  transform: translateY(9.75px) rotate(45deg);
+.borderTop {
+  top: 0;
+  transform: translateY(2px);
 }
 
-.hamburger.open .line:nth-child(2) {
-  opacity: 0;
+.borderBottom {
+  bottom: 0;
+  transform: translateY(-2px);
 }
 
-.hamburger.open .line:nth-child(3) {
-  transform: translateY(-9.75px) rotate(-45deg);
+.hamburger:hover ~ .borderTop,
+.hamburger:focus ~ .borderTop,
+.hamburger:active ~ .borderTop,
+.hamburger:hover ~ .borderBottom,
+.hamburger:focus ~ .borderBottom,
+.hamburger:active ~ .borderBottom {
+  opacity: 1;
+  transform: scaleX(1) translateY(0);
+  z-index: 1200;
 }
 
-/* Expanding circle animation behind button */
+.hamburger:hover .line,
+.hamburger:active .line,
+.hamburger:focus .line {
+  background-color: var(--color-text);
+}
+
+/* Overlay container - uses sticky positioning */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+/* Expanding circle animation from mouse position */
 .expandingCircle {
   position: fixed;
   width: 40px;
@@ -81,50 +111,114 @@
   border-radius: 50%;
   pointer-events: none;
   transform-origin: center center;
-  z-index: 1000;
+  z-index: 10000;
   transform: scale(0);
   will-change: transform;
-  animation: expandCircle 0.5s forwards ease-out;
+  animation: expandCircle 0.8s forwards ease-out;
 }
 
 @keyframes expandCircle {
   to {
-    transform: scale(200); /* Scale large enough to cover viewport */
+    transform: scale(200);
   }
 }
 
-
-.closeIcon {
-  font-size: 32px;
-  line-height: 40px;
-  color: var(--color-text);
-  user-select: none;
-  text-align: center;
-  width: 100%;
-  display: block;
-  cursor: pointer;
+/* Close button styling - matches hamburger */
+.closeButtonWrapper {
+  position: fixed;
+  display:flex;
+  top: 20px;
+  right: 20px;
+  z-index: 10002;
+  opacity: 0;
+  min-width: 48px;
+  min-height: 46px;
+  animation: fadeIn 0.3s 0.5s forwards ease-out;
 }
 
+.closeButton {
+  background: var(--color-text);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  min-width: 48px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10003;
+}
 
-/* Fullscreen menu container, initially hidden and non-interactive */
+.closeButton:hover .closeIcon,
+.closeButton:active .closeIcon,
+.closeButton:focus .closeIcon {
+  color: var(--color-text);
+  
+}
+
+.closeIcon {
+  color: var(--color-bg);
+  display: block;
+  transition: color 0.2s ease;
+}
+
+/* Close button borders */
+.closeBorderTop,
+.closeBorderBottom {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-text);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 10002;
+  transform-origin: left;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.closeBorderTop {
+  top: 0;
+  transform: translateY(2px);
+}
+
+.closeBorderBottom {
+  bottom: 0;
+  transform: translateY(-2px);
+}
+
+.closeButton:hover ~ .closeBorderTop,
+.closeButton:focus ~ .closeBorderTop,
+.closeButton:active ~ .closeBorderTop,
+.closeButton:hover ~ .closeBorderBottom,
+.closeButton:focus ~ .closeBorderBottom,
+.closeButton:active ~ .closeBorderBottom {
+  opacity: 1;
+  transform: scaleX(1) translateY(0);
+  z-index: 12000;
+}
+
+/* Fullscreen menu container */
 .menu {
   position: fixed;
-  inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0 */
+  inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  pointer-events: none;
   gap: 24px;
-  opacity: 0;
-  z-index: 1100; /* Above circle but below hamburger */
+  z-index: 10001;
   user-select: none;
+  pointer-events: auto;
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-/* When menu is open, make interactive and visible */
+/* When menu is open, make visible */
 .menuOpen {
-  pointer-events: auto;
   opacity: 1;
 }
 
@@ -149,52 +243,15 @@
   }
 }
 
-.hamburger:hover .line, .hamburger:active .line, .hamburger:focus .line  {
-    background-color: var(--color-bg);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .menuOpen .activeBox {
-    display:none !important;
-}
-
-
-/* Shared border base */
-.borderTop,
-.borderBottom {
-    display:block;
-    position: absolute;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: var(--color-text);
-  pointer-events: none;
-  opacity: 0;
-  z-index: 800;
-  
-  transform-origin: left;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.borderTop {
-  top: 0;
-  transform: translateY(2px);
-  padding-bottom: -8px;
-}
-
-.borderBottom {
-  bottom: 0;
-  transform: translateY(-2px);
-}
-
-/* When the hamburger is open and hovered, focused, or active, show the borders */
-.hamburger:hover ~ .borderTop,
-.hamburger:focus ~ .borderTop,
-.hamburger:active ~ .borderTop,
-.hamburger:hover ~ .borderBottom,
-.hamburger:focus ~ .borderBottom,
-.hamburger:active ~ .borderBottom {
-  opacity: 1;
-  transform: scaleX(1);
-  z-index: 1200;
-  transform: translateY(0);
+  display: none !important;
 }
