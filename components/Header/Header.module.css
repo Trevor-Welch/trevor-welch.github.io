@@ -13,12 +13,11 @@
 
   @media (width >=  768px) {
     max-width: 768px;
-    padding-top: 32px;
   }
 
   @media (width >=  1024px) {
     max-width: 1024px;
-
+    padding-top: 32px;
   }
 
   @media (width >=  1280px) {
@@ -29,7 +28,7 @@
     max-width: 1536px;
   }
 
-  nav {
+  .header-nav {
     display: none;
     gap: 16px;
 
@@ -39,22 +38,25 @@
   }
 }
 
-
 .logotext {
-  font-size: 1.35rem;
   letter-spacing: var(--letter-spacing-wide);
   text-shadow: var(--text-shadow-subtle);
 
   @media (width >= 340px) {
-    font-size: 1.75rem;
+    font-size: 1.35rem;
     letter-spacing: var(--letter-spacing-wider);
   }
 
   @media (width >=  768px) {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
+    letter-spacing: 2px;
   }
 
   @media (width >=  1024px) {
     font-size: 1.75rem;
+  }
+
+  @media (width >=  1280px) {
+    letter-spacing: var(--letter-spacing-wider);
   }
 }

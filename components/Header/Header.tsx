@@ -1,13 +1,16 @@
 // /components/Header/Header.tsx
 'use client';
+
 import Link from 'next/link';
-import PatternDivider from '@/components/PatternDivider/PatternDivider';
-import HeaderNavLink from '@/components/HeaderNavLink/HeaderNavLink';
-import MobileMenu from '@/components/MobileMenu/MobileMenu';
-//import MobileMenu from './MobileMenu';
-import JumpInText from '@/components/JumpInText/JumpInText';
+
+import JumpInText from '@/components/JumpInText/';
+import PatternDivider from '@/components/PatternDivider/';
+import VerticalBarsFlair from '@/components/VerticalBarsFlair/';
+
+import HeaderNavLink from './HeaderNavLink/HeaderNavLink';
+import MobileMenu from './MobileMenu/MobileMenu';
+
 import styles from './Header.module.css';
-import VerticalBarsFlair from '../VerticalBarsFlair/VerticalBarsFlair';
 
 export default function Header() {
   const menuItems = [
@@ -21,11 +24,11 @@ export default function Header() {
     <header>
       <div className={styles['header-contents']}>
         <Link href="/">
-          <JumpInText text="Trevor W." />
+          <JumpInText text="Trevor W." className={styles.logotext} />
         </Link>
-        <div className={'flex gap-6'}>
+        <div className={'flex gap-4'}>
           <VerticalBarsFlair variant="faded" animation="fadeInFromRight" animationDelay={800}/>
-          <nav>
+          <nav className={styles['header-nav']}>
             {menuItems.map(({ href, label }, i) => (
               <HeaderNavLink
                 key={href}

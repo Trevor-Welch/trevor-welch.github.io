@@ -3,13 +3,10 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+
+import {AboutIcon, HomeIcon, SelectorIcon} from '@/components/icons/';
+
 import styles from './HeaderNavLink.module.css';
-
-// Import your icons
-import SelectorIcon from '@/components/icons/SelectorIcon';
-import HomeIcon from '@/components/icons/HomeIcon';
-import AboutIcon from '@/components/icons/AboutIcon';
-
 
 interface HeaderLinkProps {
   href: string;
@@ -29,7 +26,6 @@ interface IconProps {
 const iconMap: Record<string, React.ComponentType<IconProps>> = {
   'Home': HomeIcon,
   'About': AboutIcon,
-  'Services': SelectorIcon,
   'Contact': SelectorIcon
 };
 
@@ -60,7 +56,7 @@ export default function HeaderNavLink({
   const IconComponent = iconMap[childText] || SelectorIcon; // fallback to SelectorIcon
 
   // Determine variant: dark if active or hovered, light otherwise
-  const iconVariant: 'light' | 'dark' = (isActive || isHovered) ? 'dark' : 'light';
+  const iconVariant = (isActive || isHovered) ? 'dark' : 'light';
 
   const wrapperClassNames = [
     styles['menu-link-wrapper'],
@@ -86,7 +82,6 @@ export default function HeaderNavLink({
       >
         {!isActive && <span className={styles['menu-link-bg']} />}
         
-        {/* Icon box */}
         <span className={styles['icon-box']}>
           <IconComponent size={18} variant={iconVariant} />
         </span>

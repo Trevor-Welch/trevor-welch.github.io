@@ -18,32 +18,51 @@ export default function JumpInText({
   delayStep = 0.05,
   staggerDelay = 0,
 }: JumpInTextProps) {
-
   if (!text) {
     return null;
   }
   
-  const chars = text.split('');
-
+  // Split text into words
+  const words = text.split(' ');
+  let charIndex = 0;
+  
   return (
     <Component className={className} aria-label={text}>
-      {chars.map((char, index) => {
-        const delay = index * delayStep + staggerDelay;
+      {words.map((word, wordIndex) => {
+        const wordChars = word.split('');
+        
         return (
-          <motion.span
-            key={`char-${index}`}
-            initial={{ opacity: 0, scale: 0.85, x: 8 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{
-              delay,
-              duration: 0.4,
-              ease: [0.25, 0.46, 0.45, 0.94],
+          <span
+            key={`word-${wordIndex}`}
+            style={{ 
+              display: 'inline-block',
+              whiteSpace: 'nowrap'
             }}
-            style={{ display: 'inline-block' }}
-            aria-hidden="true"
           >
-            {char === ' ' ? '\u00A0' : char}
-          </motion.span>
+            {wordChars.map((char, charIndexInWord) => {
+              const delay = charIndex * delayStep + staggerDelay;
+              charIndex++;
+              
+              return (
+                <motion.span
+                  key={`char-${wordIndex}-${charIndexInWord}`}
+                  initial={{ opacity: 0, scale: 0.85, x: 8 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  transition={{
+                    delay,
+                    duration: 0.4,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                  }}
+                  style={{ display: 'inline-block' }}
+                  aria-hidden="true"
+                >
+                  {char}
+                </motion.span>
+              );
+            })}
+            {/* Add space after word (except last word) */}
+            {wordIndex < words.length - 1 && '\u00A0'}
+          </span>
         );
       })}
     </Component>

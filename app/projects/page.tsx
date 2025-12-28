@@ -10,7 +10,6 @@ export default function ProjectsPage() {
       <JumpInText
         text="Past Projects"
         as="h1"
-        className="mb-10"
       />
       
       <NestedContainers 
