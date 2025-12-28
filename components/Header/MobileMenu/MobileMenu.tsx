@@ -18,7 +18,6 @@ const menuItems = [
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const [circleAnimating, setCircleAnimating] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   
@@ -50,14 +49,6 @@ export default function MobileMenu() {
     }, 600); // Match this to the CSS animation duration
   };
   
-  // Toggle circle animation
-  useEffect(() => {
-    if (isOpen && !isClosing) {
-      setCircleAnimating(true);
-    } else if (isClosing) {
-      setCircleAnimating(false);
-    }
-  }, [isOpen, isClosing]);
   
   // Handle scroll behavior - use position sticky instead of overflow hidden
   useEffect(() => {
