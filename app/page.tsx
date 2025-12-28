@@ -92,7 +92,7 @@ const items: PanelContainerItem[] = [
   },
   {
     id: 'contact',
-    label: 'Contact Info',
+    label: 'Contact',
     content: <InfoBox title="contactMe.exe" note="SWYgeW91J3JlIHJlYWRpbmcgdGhpcywgbGV0J3MgY2hhdA==">
         <p>Whether you have a project in mind, a question, or just want to say hi, I&apos;m here to help.</p>
         <ContactForm />
