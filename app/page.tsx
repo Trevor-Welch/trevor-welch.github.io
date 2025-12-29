@@ -17,7 +17,7 @@ const items: PanelContainerItem[] = [
           <OpenForWork />
           <h2>Full-Stack Web Developer</h2>
           <p className="-mt-6 lg:mt-0"><i className="text-sm lg:text-xl opacity-50">Looking for someone who knows code?</i></p>
-          <p>My name is <b>Trevor Welch</b> and I am an <b>web technology professional</b> based out of Raleigh, NC.</p>
+          <p>My name is <b>Trevor Welch</b> and I am a <b>web technology professional</b> based out of Raleigh, NC.</p>
           <p>I help both individuals and teams by providing <b>over 10 years of experience</b> in building and maintaining websites, web applications, and more -- specializing in data heavy applications and coming up with creative UIs that make the internet a more interesting place to browse.</p>
           <p><b>My favorite projects are the ones that make life easier for others.</b></p>
           <div className="flex gap-4 mb-6 mt-4">
