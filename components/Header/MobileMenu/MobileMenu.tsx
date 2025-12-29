@@ -18,7 +18,6 @@ const menuItems = [
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   
   // Track mouse position for expanding circle
